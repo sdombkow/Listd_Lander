@@ -70,13 +70,10 @@ Listd::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+  :address   => "smtp.mandrillapp.com",
+  :port      => 25,
+  :user_name => "rohank12345@gmail.com",
+  :password  => "3321daf7-f3bf-4db6-bc34-ad24c7f7d1d6"
   }
 
 
