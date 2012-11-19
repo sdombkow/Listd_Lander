@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "a99c4c891db51fde47f12be67bac8f87fd6196b33fb4c39c7f0360dcf380b5eef5460727bbd16556a5729dc435d96532085929c5a7fb7d95d743d637b8051a31"
+  # config.pepper = "a1ca4f6ba1f8d4e3f1d6e7c28c30f836260becbfa63c87277ed9a604bc0c16db4980f8ffa60d1cc3d7b4835026d528194e4ec2aa3bb288a1370fd3856a6bd610"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

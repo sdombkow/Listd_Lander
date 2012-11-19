@@ -1,0 +1,41 @@
+<p>
+  <b>Bar:</b>
+  <%= @pass_set.bar.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @pass_set.date %>
+</p>
+
+<p>
+  <b>Total released passes:</b>
+  <%= @pass_set.total_released_passes %>
+</p>
+
+<p>
+  <b>Sold passes:</b>
+  <%= @pass_set.sold_passes %>
+</p>
+
+<p>
+  <b>Unsold passes:</b>
+  <%= @pass_set.unsold_passes %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @pass_set.price %>
+</p>
+<%= form_for @purchase do |f| %>
+  <%= f.hidden_field :date,:value => @pass_set.date %>
+  <%= f.hidden_field :bar,:value =>  @bar.id %>
+  <%= f.select :num_passes, (1..5) %>
+  <%= f.hidden_field :pass_set,:value =>  @pass_set.id %>
+   <div><%= f.label :name %><br />
+   <%= f.text_field :name %> </div>
+  <%= f.submit "Make Purchase"%>
+<% end %>
+<%= link_to "Make Purchase", {:controller => 'purchases', :action => 'createpurchase',:bar=>@bar, :pass_set=>@pass_set.id,:date=>@pass_set.date}%>
+<%= link_to 'Edit', edit_bar_pass_set_path(@bar,@pass_set) %> |
+<%= link_to 'Back', bar_pass_sets_path %>

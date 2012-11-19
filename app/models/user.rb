@@ -1,21 +1,13 @@
 class User < ActiveRecord::Base
-  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  
-  def confirmation_required?
-    if Rails.env.development?
-      return false
-    else
-      return !confirmed?
-    end
-  end
-
+  has_many :bars, :dependent => :destroy
+  has_many :purchases
+  has_many :passes, :through => :purchases
 end

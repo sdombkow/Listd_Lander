@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Listd::Application.config.secret_token = '920ce73998590e502e0f39519e40e45e6f0be06e8d6b947d97543816e4827f171e6d3ada0b568121674920db0352dc4df941f3b7ded345dfdc40bf7d1957a2a4'
+ListdApp::Application.config.secret_token = '1473660a849ecee4c78e652b86cb39d50b5153062063c2bb1e71e882cddc9c59bd9496d5e9989c88d6688c5594303ec5e716db32fa44214d1dfd3164d0f46421'

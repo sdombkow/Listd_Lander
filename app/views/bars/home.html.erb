@@ -1,0 +1,20 @@
+<h1>Search for a bar</h1>
+
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @bars.each do |bar| %>
+  <tr>
+    <td><%= bar.name %></td>
+    <td><%= bar.address %></td>
+
+  </tr>
+<% end %>
+</table>

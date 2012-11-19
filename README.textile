@@ -1,4 +1,4 @@
-h1. Listd
+h1. Listdapp
 
 This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.com/.
 
@@ -16,14 +16,14 @@ Recipes:
 ["controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "prelaunch", "railsapps", "readme", "routes", "saas", "setup", "testing", "views"]
 
 Preferences:
-{:git=>true, :railsapps=>"rails3-bootstrap-devise-cancan", :database=>"sqlite", :unit_test=>"rspec", :integration=>"cucumber", :fixtures=>"factory_girl", :frontend=>"bootstrap", :bootstrap=>"sass", :email=>"gmail", :authentication=>"devise", :devise_modules=>"default", :authorization=>"cancan", :starter_app=>"admin_app", :form_builder=>"simple_form", :quiet_assets=>true, :dev_webserver=>"webrick", :prod_webserver=>"thin", :templates=>"erb", :github=>true}
+{:git=>true, :railsapps=>"rails3-devise-rspec-cucumber", :database=>"sqlite", :unit_test=>"rspec", :integration=>"cucumber", :fixtures=>"factory_girl", :frontend=>"none", :email=>"gmail", :authentication=>"devise", :devise_modules=>"default", :authorization=>"none", :starter_app=>"users_app", :form_builder=>"none", :quiet_assets=>true, :dev_webserver=>"webrick", :prod_webserver=>"thin", :templates=>"erb"}
 
 h2. Ruby on Rails
 
 This application requires:
 
 * Ruby version 1.9.3
-* Rails version 3.2.7
+* Rails version 3.2.1
 
 Learn more about "Installing Rails":http://railsapps.github.com/installing-rails.html.
 
@@ -35,10 +35,10 @@ h2. Development
 
 * Template Engine: ERB
 * Testing Framework: RSpec and Factory Girl and Cucumber
-* Front-end Framework: Twitter Bootstrap (Sass)
-* Form Builder: SimpleForm
+* Front-end Framework: None
+* Form Builder: None
 * Authentication: Devise
-* Authorization: CanCan
+* Authorization: None
 
 h2. Email
 

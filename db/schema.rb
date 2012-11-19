@@ -11,22 +11,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118061723) do
+ActiveRecord::Schema.define(:version => 20121118050902) do
 
-  create_table "roles", :force => true do |t|
+  create_table "bars", :force => true do |t|
     t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "phone_number"
+    t.string   "address"
+    t.text     "intro_paragraph"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], :name => "index_roles_on_name"
+  add_index "bars", ["user_id"], :name => "index_bars_on_user_id"
+
+  create_table "pass_sets", :force => true do |t|
+    t.integer  "bar_id"
+    t.date     "date"
+    t.integer  "total_released_passes"
+    t.integer  "sold_passes"
+    t.integer  "unsold_passes"
+    t.decimal  "price"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "pass_sets", ["bar_id"], :name => "index_pass_sets_on_bar_id"
+
+  create_table "passes", :force => true do |t|
+    t.integer  "pass_set_id"
+    t.integer  "purchase_id"
+    t.string   "name"
+    t.boolean  "redeemed"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "passes", ["pass_set_id"], :name => "index_passes_on_Pass_Set_id"
+  add_index "passes", ["purchase_id"], :name => "index_passes_on_Purchase_id"
+
+  create_table "purchases", :force => true do |t|
+    t.date     "date"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -35,24 +70,14 @@ ActiveRecord::Schema.define(:version => 20121118061723) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.boolean  "admin",                  :default => false
+    t.boolean  "partner",                :default => false
   end
 
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_roles", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-  end
-
-  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
 end

@@ -1,8 +1,28 @@
-Listd::Application.routes.draw do
+ListdApp::Application.routes.draw do
+  get "passes/index"
+  match '/mypasses' => 'passes#index'
+  
+  get "bars/home"
+  resources :bars do
+  	resources :pass_sets
+    collection do
+      post 'search'
+    end
+  end
+  resources :purchases do
+  	collection do
+  		get 'createpurchase'
+  	end
+  end
+
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'bars#index'
   end
   root :to => "home#index"
+  
   devise_for :users
-  resources :users
+  resources :users do
+	resources :bars
+	end
+	
 end

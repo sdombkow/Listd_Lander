@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree .
+$(document).ready(function() {
+
+  $("select#search").change(function(){
+    $(this).closest("form").submit();
+  });
+
+});

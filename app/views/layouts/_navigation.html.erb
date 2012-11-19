@@ -1,4 +1,4 @@
-<%= link_to "Listd", root_path, :class => 'brand' %>
+<%= link_to "Listdapp", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
@@ -13,11 +13,21 @@
     <li>
     <%= link_to 'Edit account', edit_user_registration_path %>
     </li>
-    <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
-      </li>
-    <% end %>
+	  <% if current_user.admin? %>
+	Logged in as admin: <%= current_user.email %>.
+	<% elsif current_user.partner? %>
+	
+	<li>
+    <%= link_to 'Add a bar location', '/bars/new' %>
+    </li>
+	
+	Logged in as partner: <%= current_user.email %>.
+	<% else %>
+	Logged in as user: <%= current_user.email %>.
+	<li>
+    <%= link_to 'My Passes', '/mypasses' %>
+    </li>
+	<% end %>
   <% else %>
     <li>
     <%= link_to 'Sign up', new_user_registration_path %>
