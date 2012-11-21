@@ -11,7 +11,7 @@
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
+    <%= link_to 'Account Management', edit_user_registration_path %>
     </li>
 	  <% if current_user.admin? %>
 	Logged in as admin: <%= current_user.email %>.
@@ -23,10 +23,11 @@
 	
 	Logged in as partner: <%= current_user.email %>.
 	<% else %>
-	Logged in as user: <%= current_user.email %>.
 	<li>
     <%= link_to 'My Passes', '/mypasses' %>
     </li>
+	Logged in as user: <%= current_user.email %>.
+
 	<% end %>
   <% else %>
     <li>

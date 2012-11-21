@@ -100,11 +100,7 @@ end
     end
   end
   
-  def isPartner?
-	unless current_user.partner?
-	redirect_to action: :index
-	end
-	end
+
   
 end
 
