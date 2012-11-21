@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe UsersController do
+describe AdminController do
 
-  describe "GET 'setPartner'" do
+  describe "GET 'customers'" do
     it "returns http success" do
-      get 'setPartner'
+      get 'customers'
       response.should be_success
     end
   end
 
-  describe "GET 'unsetPartner'" do
+  describe "GET 'partners'" do
     it "returns http success" do
-      get 'unsetPartner'
+      get 'partners'
       response.should be_success
     end
   end

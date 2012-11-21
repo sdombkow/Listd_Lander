@@ -1,4 +1,12 @@
 ListdApp::Application.routes.draw do
+  post "users/setPartner"
+
+  post "users/unsetPartner"
+
+  get "admin/customers"
+  get "admin/partners"
+
+  resources :admin
   get "passes/index"
   match '/mypasses' => 'passes#index'
   
@@ -15,9 +23,9 @@ ListdApp::Application.routes.draw do
   	end
   end
 
-  authenticated :user do
-    root :to => 'bars#index'
-  end
+  # authenticated :user do
+  # root :to => 'bars#index'
+  # end
   root :to => "home#index"
   
   devise_for :users

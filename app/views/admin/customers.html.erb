@@ -1,0 +1,20 @@
+<h1>Admin#customers</h1>
+<p>Find me in app/views/admin/customers.html.erb</p>
+</br>
+<p>    <%= link_to 'Show Registered Partners', 'partners' %> </p>
+
+<table cellpadding="10">
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+ 
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%= customer.email %></td>
+    <td><%= customer.name %></td>
+	<td><%= link_to "View Information", customer %></td>
+  </tr>
+<% end %>
+</table>

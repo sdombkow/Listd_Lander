@@ -1,3 +1,23 @@
-<h3>User</h3>
+<h2>User Information</h2>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<p>Registered on: <%= @user.created_at %> </p>
+<p>Last Logged in at: <%=@user.last_sign_in_at %></p>
+<p>Partner Status: <%=@user.partner %></p>
+<p># of Bar Locations: <%=@user.bars.count %></p>
+<p># of Purchases: <%=@user.purchases.count %></p>
+<p># of Passes: <%=@user.passes.count %></p>
+
+<p>
+  <%= link_to 'Delete User', [@user],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+			   
+			   <% if(@user.partner?) %>
+			       <%= link_to 'Unset Partner', users_unsetPartner_path(@user, :id => @user.id), :method=>:post %>
+			   <% else %>
+			   	   <%= link_to 'Set Partner', users_setPartner_path(@user, :id => @user.id), :method=>:post %> 
+			   <%end%>
+
+</p>
+
