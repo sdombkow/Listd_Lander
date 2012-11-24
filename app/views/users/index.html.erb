@@ -1,8 +1,7 @@
-<h3>Users</h3>
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %> signed up <%= user.created_at.to_date %>
-    </li>
-  <% end %>
-</ul>	
+<h1>Users Homepage for  <%=@user.name%></h1>
+
+<h3>Search for a bar</h3>
+<div id="search">
+        <%= render 'bars/search' %>
+      </div>
+<br />

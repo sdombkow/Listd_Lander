@@ -17,7 +17,7 @@ class BarsController < ApplicationController
   end
   
   def home
-  @bars= current_user.bars
+  @bars= current_user.bars.order(:name)
   end
   
 
@@ -25,7 +25,7 @@ class BarsController < ApplicationController
   # GET /bars/1.json
   def show
     @bar = Bar.find(params[:id])
-    @pass_set = @bar.pass_sets.order("created_at").last
+    @pass_sets = @bar.pass_sets.order(:created_at)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bar }
@@ -39,7 +39,8 @@ class BarsController < ApplicationController
 	@user = current_user
 	@bar.user = @user
 	@bar.user_id= @user.id
-    @bar.pass_sets.build
+   # @bar.pass_sets.build
+   # We do not want to create a default pass set when form is submitted;
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bar }
@@ -72,6 +73,7 @@ class BarsController < ApplicationController
 def search
   @bars = Bar.search params[:search]
 end
+
   # PUT /bars/1
   # PUT /bars/1.json
   def update
@@ -93,14 +95,12 @@ end
   def destroy
     @bar = Bar.find(params[:id])
     @bar.destroy
-
     respond_to do |format|
-      format.html { redirect_to bars_url }
+      format.html { redirect_to bars_url, notice: 'Bar was successfully deleted.'}
       format.json { head :no_content }
     end
-  end
-  
 
+  end
   
 end
 
