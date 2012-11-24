@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :isAdmin? , :except => [:index]
   def index
-    @users = User.all
+  @user=current_user
   end
 
   def show
@@ -14,14 +14,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 	@user.partner=true
 	@user.save
-	redirect_to :controller=>'admin', :action=>'customers'
+	redirect_to :controller=>'admin', :action=>'partners'
+	   flash[:notice] = @user.name + " was set as a partner!"
   end
   
   def unsetPartner
         @user = User.find(params[:id])
 	@user.partner=false
 	@user.save
-	redirect_to :controller=>'admin', :action=>'partners'
+	redirect_to :controller=>'admin', :action=>'customers'
+		   flash[:notice] = @user.name + " was unset as a partner!"
   end
 
   def destroy

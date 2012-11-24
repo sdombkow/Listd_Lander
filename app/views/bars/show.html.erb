@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h1>  <%= @bar.name %> Information Page </h1>
 <p>
   <b>Name:</b>
   <%= @bar.name %>
@@ -20,12 +19,51 @@
   <%= @bar.intro_paragraph %>
 </p>
 
-<% if @pass_set %>
-<h2>Most Recent Pass Set</h2>
-<%= render @pass_set %>
-<% else %>
+<% if @pass_sets.empty? %>
 <h2>No Pass Sets available</h2>
+<% else %>
+<h2>Available Pass Sets</h2>
+<table cellpadding="10">
+  <tr>
+    <th>Date</th>
+    <th>Total released passes</th>
+    <th>Sold passes</th>
+    <th>Unsold passes</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pass_sets.each do |pass_set| %>
+  <tr>
+    <td><%= pass_set.date %></td>
+    <td><%= pass_set.total_released_passes %></td>
+    <td><%= pass_set.sold_passes %></td>
+    <td><%= pass_set.unsold_passes %></td>
+    <td><%= pass_set.price %></td>
+	<%if(current_user.partner?) %>
+    <td><%= link_to 'Show Purchased Tickets', [@bar,pass_set] %></td>
+	<td><%= link_to 'Edit', edit_bar_pass_set_path(@bar, pass_set) %></td>
+	<td><%= link_to 'Delete', [@bar, pass_set],
+               :confirm => 'Are you sure?',
+               :method => :delete %> <td>
+			   <%else %>
+			    <td><%= link_to 'Purchase a Ticket', [@bar,pass_set] %></td>   
+			   <%end%>
+  </tr>
 <% end %>
-<%= link_to 'Bar Pass Sets' , [@bar, :pass_sets] %> |
-<%= link_to 'Edit', edit_bar_path(@bar) %> |
+</table>
+<% end %>
+
+<%if(current_user.partner?) %>
+<%= link_to 'New Pass set', new_bar_pass_set_path(@bar) %> |
+<%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
+  <%= link_to 'Delete Bar Location', [@bar],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
 <%= link_to 'Back', bars_path %>
+<%else%>
+<%= link_to 'Home', root_path %>
+<%end%>
+

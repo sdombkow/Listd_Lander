@@ -1,6 +1,21 @@
-<ul>
-    <% @bars.each do |bar| %>
-  <li><%= link_to bar.name, 
-    bar  %></li>
-  <% end %>
-</ul>
+<% if(@bars.empty?) %>
+<h5> There are no bar locations with the searched name </h5>
+<% else %>
+<table cellpadding="2">
+  <tr>
+    <th>Bar Name</th>
+    <th>Address</th>
+    <th></th>
+	<th></th>
+  </tr>
+
+<% @bars.each do |bar| %>
+  <tr>
+    <td><%= bar.name %></td>
+    <td><%= bar.address %></td>
+	<td><%= link_to "View Bar", bar %></td>
+  </tr>
+<% end %>
+</table>
+
+<%end%>

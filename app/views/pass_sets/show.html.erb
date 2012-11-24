@@ -27,15 +27,43 @@
   <b>Price:</b>
   <%= @pass_set.price %>
 </p>
+
+</br>
+<% if current_user.partner? %>
+<table cellpadding="5" >
+  <tr>
+    <th>Name on Valid ID</th>
+    <th>Entry Date</th>
+    <th>Bar</th>
+    <th>Purchase Date</th>
+    <th>Redeemed?</th>
+	<th></th>
+  </tr>
+
+<% @passes.each do |pass| %>
+  <tr>
+    <td><%= pass.name %></td>
+    <td><%= pass.pass_set.date %></td>
+    <td><%= pass.pass_set.bar.name %></td>
+    <td><%= pass.created_at%></td>
+    <td><%= pass.redeemed %></td>
+	<td> <%= link_to 'Toggle Redeem', passes_toggleRedeem_path(pass,:id => pass.id), :method=>:post %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
 <%= form_for @purchase do |f| %>
   <%= f.hidden_field :date,:value => @pass_set.date %>
   <%= f.hidden_field :bar,:value =>  @bar.id %>
+  Number of Tickets: </br>
   <%= f.select :num_passes, (1..5) %>
   <%= f.hidden_field :pass_set,:value =>  @pass_set.id %>
-   <div><%= f.label :name %><br />
-   <%= f.text_field :name %> </div>
+   <div>Name: </br>
+   <%= f.text_field :name %> (Must match Valid ID)</div>
   <%= f.submit "Make Purchase"%>
 <% end %>
-<%= link_to "Make Purchase", {:controller => 'purchases', :action => 'createpurchase',:bar=>@bar, :pass_set=>@pass_set.id,:date=>@pass_set.date}%>
-<%= link_to 'Edit', edit_bar_pass_set_path(@bar,@pass_set) %> |
-<%= link_to 'Back', bar_pass_sets_path %>
+<% end %>
+</br>
+</br>
+<%= link_to 'Back', @pass_set.bar %>

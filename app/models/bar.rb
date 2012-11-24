@@ -1,6 +1,6 @@
 class Bar < ActiveRecord::Base
 
-	has_many :pass_sets
+	has_many :pass_sets, :dependent => :destroy
 	accepts_nested_attributes_for :pass_sets, :allow_destroy => true
 
 	def self.search(search)

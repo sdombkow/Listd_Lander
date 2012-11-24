@@ -1,5 +1,22 @@
 <h1>New pass_set</h1>
 
-<%= render 'form' %>
+<%= form_for([@bar,@pass_set]) do |f| %>
+  
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :total_released_passes %><br />
+    <%= f.number_field :total_released_passes %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', bar_pass_sets_path(@bar) %>

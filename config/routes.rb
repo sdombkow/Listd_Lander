@@ -2,7 +2,7 @@ ListdApp::Application.routes.draw do
   post "users/setPartner"
 
   post "users/unsetPartner"
-
+  post "passes/toggleRedeem"
   get "admin/customers"
   get "admin/partners"
 

@@ -15,4 +15,23 @@
   <b>Redeemed?</b>
   <%= pass.redeemed%>
 </p>
+<table cellpadding="10">
+  <tr>
+    <th>Name on Valid ID</th>
+    <th>Entry Date</th>
+    <th>Bar</th>
+    <th>Purchase Date</th>
+    <th>Redeemed?</th>
+  </tr>
+
+<% @passes.each do |pass| %>
+  <tr>
+    <td><%=  pass.name %></td>
+    <td><%=  pass.pass_set.date %></td>
+    <td><%= pass.pass_set.bar.name %></td>
+    <td></td>
+    <td><%= pass.redeemed %></td>
+  </tr>
+<% end %>
+</table>
 

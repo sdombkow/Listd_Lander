@@ -1,20 +1,30 @@
-<h1>Search for a bar</h1>
+<h1>Partner Homepage for <%=current_user.name %></h1>
 
-<h1>Listing posts</h1>
+<h2>Your Bar Locations </h2>  	
 
-<table>
+<% if(@bars.empty?) %>
+<h5> There are no bar locations linked to this account </h5>
+<% else %>
+<table cellpadding="10">
   <tr>
-    <th>Title</th>
-    <th>Text</th>
+    <th>Bar Name</th>
+    <th>Address</th>
     <th></th>
-    <th></th>
+	<th></th>
   </tr>
- 
+
 <% @bars.each do |bar| %>
   <tr>
     <td><%= bar.name %></td>
     <td><%= bar.address %></td>
-
+	<td><%= link_to "View Information", bar %></td>
+	<td>  <%= link_to 'Delete Bar Location', [bar],
+               :confirm => 'Are you sure?',
+               :method => :delete %> </td>
   </tr>
 <% end %>
 </table>
+
+<%end%>
+
+ <%= link_to 'Add a bar location', '/bars/new' %>
