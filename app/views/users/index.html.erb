@@ -5,3 +5,19 @@
         <%= render 'bars/search' %>
       </div>
 <br />
+<p>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </p>
+<table>
+  <tr>
+	<th>Bar Name</th>
+    <th>Address</th>
+    <th>Your Distance</th>
+  </tr>
+  <% for location in @localvenues %>
+    <tr>
+	  <td><%= location.name%>
+      <td><%= location.address %></td>
+	  <td><%= location.distance_to(@user_information[0].coordinates)%></td>
+      <td><%= link_to "Show", location %></td>
+    </tr>
+  <% end %>
+</table>

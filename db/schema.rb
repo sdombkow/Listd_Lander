@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118050902) do
+ActiveRecord::Schema.define(:version => 20121126195235) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20121118050902) do
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "bars", ["user_id"], :name => "index_bars_on_user_id"
@@ -53,8 +55,9 @@ ActiveRecord::Schema.define(:version => 20121118050902) do
   create_table "purchases", :force => true do |t|
     t.date     "date"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "stripe_card_token"
   end
 
   add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"

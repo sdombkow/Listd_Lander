@@ -1,3 +1,28 @@
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Street View Layer</title>
+    <link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+      function initialize() {
+        var barlocation = new google.maps.LatLng(<%= @bar.latitude%>,<%=@bar.longitude%>);
+        var mapOptions = {
+          center: barlocation,
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.HYBRID,
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+		var marker = new google.maps.Marker({
+		            position: barlocation,
+		            map: map,
+					title: 'Bar is Here.'
+		        });
+		}
+    </script>
+</head>
+
+
 <h1>  <%= @bar.name %> Information Page </h1>
 <p>
   <b>Name:</b>
@@ -18,6 +43,11 @@
   <b>Intro paragraph:</b>
   <%= @bar.intro_paragraph %>
 </p>
+
+<body onload="initialize()">
+	<div id="map_canvas" style="width: 725px; height: 400px"></div>
+</body>
+
 
 <% if @pass_sets.empty? %>
 <h2>No Pass Sets available</h2>
