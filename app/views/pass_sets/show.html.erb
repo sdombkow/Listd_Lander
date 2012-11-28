@@ -29,7 +29,10 @@
 </p>
 
 </br>
-<% if current_user.partner? %>
+<% if current_user.partner? || current_user.admin? %>
+<% if @passes.empty? %>
+<h5>No one has bought passes yet! </h5>
+<%else%>
 <table cellpadding="5" >
   <tr>
     <th>Name on Valid ID</th>
@@ -51,7 +54,7 @@
   </tr>
 <% end %>
 </table>
-
+<%end%>
 <% else %>
 <%= form_for @purchase do |f| %>
   <%= f.hidden_field :stripe_card_token %>
@@ -85,4 +88,4 @@
 <% end %>
 </br>
 </br>
-<%= link_to 'Back', @pass_set.bar %>
+<%= link_to 'Back', :back %>

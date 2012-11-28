@@ -72,13 +72,15 @@
     <td><%= pass_set.sold_passes %></td>
     <td><%= pass_set.unsold_passes %></td>
     <td><%= pass_set.price %></td>
-	<%if(current_user.partner?) %>
-    <td><%= link_to 'Show Purchased Tickets', [@bar,pass_set] %></td>
-	<td><%= link_to 'Edit', edit_bar_pass_set_path(@bar, pass_set) %></td>
-	<td><%= link_to 'Delete', [@bar, pass_set],
+	<%if(current_user.admin?) %>
+    <td><%= link_to 'Show Purchased Tickets', [@bar.user, @bar, pass_set] %></td>
+	<td><%= link_to 'Edit', edit_user_bar_pass_set_path(@bar.user, @bar, pass_set) %></td>
+	<td><%= link_to 'Delete', [@bar.user, @bar, pass_set],
                :confirm => 'Are you sure?',
                :method => :delete %> <td>
-			   <%else %>
+			   <%elsif (current_user.partner?)%>
+			       <td><%= link_to 'Show Purchased Tickets', [@bar, pass_set] %></td>
+				   <%else %>
 			    <td><%= link_to 'Purchase a Ticket', [@bar,pass_set] %></td>   
 			   <%end%>
   </tr>
@@ -86,13 +88,16 @@
 </table>
 <% end %>
 
-<%if(current_user.partner?) %>
-<%= link_to 'New Pass set', new_bar_pass_set_path(@bar) %> |
-<%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
-  <%= link_to 'Delete Bar Location', [@bar],
+<%if(current_user.admin?) %>
+<%= link_to 'New Pass set', new_user_bar_pass_set_path(@user,@bar) %> |
+<%= link_to 'Edit Bar Information', edit_user_bar_path(@user,@bar) %> |
+  <%= link_to 'Delete Bar Location', [@user,@bar],
                :confirm => 'Are you sure?',
                :method => :delete %> |
-<%= link_to 'Back', bars_path %>
+<%= link_to 'Back', @user %>
+<%elsif(current_user.partner?) %>
+<%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
+<%= link_to 'Back', root_path %>
 <%else%>
 <%= link_to 'Home', root_path %>
 <%end%>

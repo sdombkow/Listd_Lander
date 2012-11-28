@@ -4,27 +4,20 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.json
   def index
-	if current_user.partner?
-	redirect_to action: :home
-	else
-    @bars = Bar.all
-
+    @user=current_user
+	@bars = @user.bars
+	
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bars }
-    end
 	end
   end
   
-  def home
-  @bars= current_user.bars.order(:name)
-  end
-  
-
   # GET /bars/1
   # GET /bars/1.json
   def show
     @bar = Bar.find(params[:id])
+	@user = @bar.user
     @pass_sets = @bar.pass_sets.order(:created_at)
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +29,7 @@ class BarsController < ApplicationController
   # GET /bars/new.json
   def new
     @bar = Bar.new
-	@user = current_user
+	@user = User.find(params[:id])
 	@bar.user = @user
 	@bar.user_id= @user.id
    # @bar.pass_sets.build
@@ -50,18 +43,19 @@ class BarsController < ApplicationController
   # GET /bars/1/edit
   def edit
     @bar = Bar.find(params[:id])
+	@user = @bar.user
   end
 
   # POST /bars
   # POST /bars.json
   def create
     @bar = Bar.new(params[:bar])
-	@user = current_user
+	@user = User.find(params[:os])
 	@bar.user = @user
 	@bar.user_id= @user.id
     respond_to do |format|
       if @bar.save
-        format.html { redirect_to @bar, notice: 'Bar was successfully created.' }
+        format.html { redirect_to  user_bar_path(@bar.user,@bar), notice: 'Bar was successfully created.' }
         format.json { render json: @bar, status: :created, location: @bar }
       else
         format.html { render action: "new" }
@@ -78,25 +72,39 @@ end
   # PUT /bars/1.json
   def update
     @bar = Bar.find(params[:id])
+	@user = User.find(params[:os])
     @pass_set = @bar.pass_sets.first
+	if(current_user.admin?)
     respond_to do |format|
       if @bar.update_attributes(params[:bar])
-        format.html { redirect_to @bar, notice: 'Bar was successfully updated.' }
+        format.html { redirect_to user_bar_path(@bar.user,@bar), notice: 'Bar was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @bar.errors, status: :unprocessable_entity }
       end
     end
+	else
+	   respond_to do |format|
+      if @bar.update_attributes(params[:bar])
+        format.html { redirect_to bar_path(@bar), notice: 'Bar was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @bar.errors, status: :unprocessable_entity }
+      end
+	end
+	end
   end
 
   # DELETE /bars/1
   # DELETE /bars/1.json
   def destroy
-    @bar = Bar.find(params[:id])
+	@bar = Bar.find(params[:id])
+	@user = @bar.user
     @bar.destroy
     respond_to do |format|
-      format.html { redirect_to bars_url, notice: 'Bar was successfully deleted.'}
+      format.html { redirect_to @user, notice: 'Bar was successfully deleted.'}
       format.json { head :no_content }
     end
 

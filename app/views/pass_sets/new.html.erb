@@ -1,6 +1,6 @@
 <h1>New pass_set</h1>
 
-<%= form_for([@bar,@pass_set]) do |f| %>
+<%= form_for([@bar.user,@bar,@pass_set]) do |f| %>
   
   <div class="field">
     <%= f.label :date %><br />
@@ -19,4 +19,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', bar_pass_sets_path(@bar) %>
+<%= link_to 'Back', user_bar_pass_sets_path(@bar.user,@bar) %>

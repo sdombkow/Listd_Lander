@@ -5,18 +5,16 @@ ListdApp::Application.routes.draw do
   post "passes/toggleRedeem"
   get "admin/customers"
   get "admin/partners"
-
+	resources :bars do
+  	resources :pass_sets
+    collection do
+      post 'search'
+			end
+		end
   resources :admin
   get "passes/index"
   match '/mypasses' => 'passes#index'
   
-  get "bars/home"
-  resources :bars do
-  	resources :pass_sets
-    collection do
-      post 'search'
-    end
-  end
   resources :purchases do
   	collection do
   		get 'createpurchase'
@@ -30,7 +28,12 @@ ListdApp::Application.routes.draw do
   
   devise_for :users
   resources :users do
-	resources :bars
+	  resources :bars do
+  	resources :pass_sets
+    collection do
+      post 'search'
+			end
+		end
 	end
 	
 end

@@ -1,5 +1,8 @@
 <h1>Editing information for <%=@bar.name%></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', @bar %>
+<% if current_user.admin?%>
+<%= link_to 'Back', user_bar_path(@user, @bar)%>
+<% else %>
+<%= link_to 'Back', bar_path( @bar)%>
+<% end %>

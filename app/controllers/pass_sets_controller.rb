@@ -55,7 +55,7 @@ class PassSetsController < ApplicationController
     @pass_set.bar = @bar
     respond_to do |format|
       if @pass_set.save
-        format.html { redirect_to [@bar], notice: 'Pass set was successfully created.' }
+        format.html { redirect_to [@bar.user, @bar], notice: 'Pass set was successfully created.' }
         format.json { render json: @pass_set, status: :created, location: @pass_set }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class PassSetsController < ApplicationController
 
     respond_to do |format|
       if @pass_set.update_attributes(params[:pass_set])
-        format.html { redirect_to [@bar], notice: 'Pass set was successfully updated.' }
+        format.html { redirect_to [@bar.user, @bar], notice: 'Pass set was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   if current_user.admin?
 	redirect_to :controller=>'admin'
   elsif current_user.partner?
-	redirect_to :controller=>'bars', :action=> 'home'
+	redirect_to :controller=>'bars'
 	else
 	redirect_to :controller=>'users'
   end

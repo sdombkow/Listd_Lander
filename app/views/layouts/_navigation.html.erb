@@ -16,11 +16,6 @@
 	  <% if current_user.admin? %>
 	Logged in as admin: <%= current_user.email %>.
 	<% elsif current_user.partner? %>
-	
-	<li>
-    <%= link_to 'Add a bar location', '/bars/new' %>
-    </li>
-	
 	Logged in as partner: <%= current_user.email %>.
 	<% else %>
 	<li>
