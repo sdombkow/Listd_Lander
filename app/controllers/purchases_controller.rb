@@ -17,14 +17,15 @@ class PurchasesController < ApplicationController
 		    @pass_set.sold_passes+=num_passes
 		    @pass_set.unsold_passes-=num_passes
 		    @pass_set.save
-		    for i in 0..num_passes-1
+		   # for i in 0..num_passes-1
 			    pass = Pass.new
 			    pass.name = params[:purchase][:name]
 			    pass.purchase_id = @purchase.id
 			    pass.pass_set_id = @pass_set.id
 			    pass.redeemed = false
+				pass.entries=num_passes
 			    pass.save
-		    end
+		    #end
 
 		    redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
