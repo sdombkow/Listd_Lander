@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129223503) do
+ActiveRecord::Schema.define(:version => 20121202045011) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20121129223503) do
     t.string   "name"
     t.boolean  "admin",                  :default => false
     t.boolean  "partner",                :default => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
