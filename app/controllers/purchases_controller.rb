@@ -10,25 +10,45 @@ class PurchasesController < ApplicationController
 			return
 		end
 		@purchase = Purchase.new(params[:purchase])
+		@purchase.user_id = @user.id
 		@purchase.date = params[:purchase][:date]
-		if @purchase.save_with_payment(@user)
 		
-		    @pass_set.sold_passes+=num_passes
-		    @pass_set.unsold_passes-=num_passes
-		    @pass_set.save
-		   # for i in 0..num_passes-1
-			    pass = Pass.new
-			    pass.name = params[:purchase][:name]
-			    pass.purchase_id = @purchase.id
-			    pass.pass_set_id = @pass_set.id
-			    pass.redeemed = false
-				  pass.entries=num_passes
-			    pass.save
-		    #end
-
-		    redirect_to [@bar,@pass_set], notice: 'Purchase created'
+		if params[:credit_card_save] == "1"
+		  if @purchase.save_with_payment(@user)
+		      @pass_set.sold_passes+=num_passes
+		      @pass_set.unsold_passes-=num_passes
+		      @pass_set.save
+		      # for i in 0..num_passes-1
+			      pass = Pass.new
+			      pass.name = params[:purchase][:name]
+			      pass.purchase_id = @purchase.id
+			      pass.pass_set_id = @pass_set.id
+			      pass.redeemed = false
+				    pass.entries=num_passes
+			      pass.save
+		      #end
+          redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
-		    redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
+		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
 		  end
+		else
+		  if @purchase.payment
+		      @pass_set.sold_passes+=num_passes
+		      @pass_set.unsold_passes-=num_passes
+		      @pass_set.save
+		      # for i in 0..num_passes-1
+			      pass = Pass.new
+			      pass.name = params[:purchase][:name]
+			      pass.purchase_id = @purchase.id
+			      pass.pass_set_id = @pass_set.id
+			      pass.redeemed = false
+				    pass.entries=num_passes
+			      pass.save
+		      #end
+          redirect_to [@bar,@pass_set], notice: 'Purchase created'
+		  else
+		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
+		  end
+ 		end   
 	  end
 end
