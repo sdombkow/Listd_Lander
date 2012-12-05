@@ -10,9 +10,8 @@ class PurchasesController < ApplicationController
 			return
 		end
 		@purchase = Purchase.new(params[:purchase])
-		@purchase.user_id = @user.id
 		@purchase.date = params[:purchase][:date]
-		if @purchase.payment
+		if @purchase.save_with_payment(@user)
 		
 		    @pass_set.sold_passes+=num_passes
 		    @pass_set.unsold_passes-=num_passes
@@ -23,7 +22,7 @@ class PurchasesController < ApplicationController
 			    pass.purchase_id = @purchase.id
 			    pass.pass_set_id = @pass_set.id
 			    pass.redeemed = false
-				pass.entries=num_passes
+				  pass.entries=num_passes
 			    pass.save
 		    #end
 
