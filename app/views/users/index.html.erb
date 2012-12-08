@@ -6,11 +6,12 @@
       </div>
 <br />
 <p>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </p>
-<table>
+<table class="table table-hover table-striped">
   <tr>
 	<th>Bar Name</th>
     <th>Address</th>
     <th>Your Distance</th>
+    <th>View Bar</th>
   </tr>
   <% for location in @localvenues %>
     <tr>

@@ -53,16 +53,14 @@
 <h2>No Pass Sets available</h2>
 <% else %>
 <h2>Available Pass Sets</h2>
-<table cellpadding="10">
+<table class="table table-hover table-striped" cellpadding="10">
   <tr>
     <th>Date</th>
     <th>Total released passes</th>
     <th>Sold passes</th>
     <th>Unsold passes</th>
     <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Purchase?</th>
   </tr>
 
 <% @pass_sets.each do |pass_set| %>
