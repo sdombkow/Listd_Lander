@@ -1,0 +1,104 @@
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Street View Layer</title>
+    <link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+      function initialize() {
+        var barlocation = new google.maps.LatLng(<%= @bar.latitude%>,<%=@bar.longitude%>);
+        var mapOptions = {
+          center: barlocation,
+          zoom: 14,
+          mapTypeId: google.maps.MapTypeId.HYBRID,
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+		var marker = new google.maps.Marker({
+		            position: barlocation,
+		            map: map,
+					title: 'Bar is Here.'
+		        });
+		}
+    </script>
+</head>
+
+
+<h1>  <%= @bar.name %> Information Page </h1>
+<p>
+  <b>Name:</b>
+  <%= @bar.name %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @bar.phone_number %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @bar.address %>
+</p>
+
+<p>
+  <b>Intro paragraph:</b>
+  <%= @bar.intro_paragraph %>
+</p>
+
+<body onload="initialize()">
+	<div id="map_canvas" style="width: 725px; height: 400px"></div>
+</body>
+
+
+<% if @pass_sets.empty? %>
+<h2>No Pass Sets available</h2>
+<% else %>
+<h2>Available Pass Sets</h2>
+<table cellpadding="10">
+  <tr>
+    <th>Date</th>
+    <th>Total released passes</th>
+    <th>Sold passes</th>
+    <th>Unsold passes</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pass_sets.each do |pass_set| %>
+  <tr>
+    <td><%= pass_set.date %></td>
+    <td><%= pass_set.total_released_passes %></td>
+    <td><%= pass_set.sold_passes %></td>
+    <td><%= pass_set.unsold_passes %></td>
+    <td><%= pass_set.price %></td>
+	<%if(current_user.admin?) %>
+    <td><%= link_to 'Show Purchased Tickets', [@bar.user, @bar, pass_set] %></td>
+	<td><%= link_to 'Edit', edit_user_bar_pass_set_path(@bar.user, @bar, pass_set) %></td>
+	<td><%= link_to 'Delete', [@bar.user, @bar, pass_set],
+               :confirm => 'Are you sure?',
+               :method => :delete %> <td>
+			   <%elsif (current_user.partner?)%>
+			       <td><%= link_to 'Show Purchased Tickets', [@bar, pass_set] %></td>
+				   <%else %>
+			    <td><%= link_to 'Purchase a Ticket', [@bar,pass_set] %></td>   
+			   <%end%>
+  </tr>
+<% end %>
+</table>
+<% end %>
+
+<%if(current_user.admin?) %>
+<%= link_to 'New Pass set', new_user_bar_pass_set_path(@user,@bar) %> |
+<%= link_to 'Edit Bar Information', edit_user_bar_path(@user,@bar) %> |
+  <%= link_to 'Delete Bar Location', [@user,@bar],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
+<%= link_to 'Back', @user %>
+<%elsif(current_user.partner?) %>
+<%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
+<%= link_to 'Back', root_path %>
+<%else%>
+<%= link_to 'Home', root_path %>
+<%end%>
+

@@ -1,0 +1,99 @@
+<p>
+  <b>Bar:</b>
+  <%= @pass_set.bar.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @pass_set.date %>
+</p>
+
+<p>
+  <b>Total released passes:</b>
+  <%= @pass_set.total_released_passes %>
+</p>
+
+<p>
+  <b>Sold passes:</b>
+  <%= @pass_set.sold_passes %>
+</p>
+
+<p>
+  <b>Unsold passes:</b>
+  <%= @pass_set.unsold_passes %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @pass_set.price %>
+</p>
+
+</br>
+<% if current_user.partner? || current_user.admin? %>
+<% if @passes.empty? %>
+<h5>No one has bought passes yet! </h5>
+<%else%>
+<table cellpadding="5" >
+  <tr>
+    <th>Name on Valid ID</th>
+    <th>Entry Date</th>
+    <th>Bar</th>
+    <th>Purchase Date</th>
+    <th>Redeemed?</th>
+	<th></th>
+  </tr>
+
+<% @passes.each do |pass| %>
+  <tr>
+    <td><%= pass.name %></td>
+    <td><%= pass.pass_set.date %></td>
+    <td><%= pass.pass_set.bar.name %></td>
+    <td><%= pass.created_at%></td>
+    <td><%= pass.redeemed %></td>
+	<td> <%= link_to 'Toggle Redeem', passes_toggleRedeem_path(pass,:id => pass.id), :method=>:post %></td>
+  </tr>
+<% end %>
+</table>
+<%end%>
+<% else %>
+<%= form_for @purchase do |f| %>
+  <%= f.hidden_field :stripe_card_token %>
+  <%= f.hidden_field :date,:value => @pass_set.date %>
+  <%= f.hidden_field :bar,:value =>  @bar.id %>
+  Number of Tickets: </br>
+  <%= f.select :num_passes, (1..5) %>
+  <%= f.hidden_field :pass_set,:value =>  @pass_set.id %>
+   <div>Name: </br>
+   <%= f.text_field :name %> (Must match Valid ID)
+   </div>
+   		<% if current_user.stripe_customer_token == nil %>
+			<div class="field">
+				<%= label_tag :card_number, "Credit Card Number" %>
+				<%= text_field_tag :card_number, nil, name: nil %>
+	  		</div>
+	  		<div class="field">
+				<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+				<%= text_field_tag :card_code, nil, name: nil %>
+	  		</div> 
+	  		<div class="field">
+	    		<%= label_tag :card_month, "Card Expiration" %>
+	    		<%= select_month nil, {add_month_numbers: true}, {name: nil, 	id:"card_month"} %>
+	    		<%= select_year nil, {start_year: Date.today.year, end_year:Date.today.year+15}, {name: nil, id: "card_year"} %>
+	  		</div> 
+			<%= check_box_tag "credit_card_save"%> Check here, if you would like us to save your credit card information.<br><br>
+			
+			<div id="stripe_error">
+			<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+			</div>
+		<% else %>
+			<br>
+			We already have your credit card information.
+			<br>
+			<br>
+		<% end %>
+  <%= f.submit "Make Purchase"%>
+<% end %>
+<% end %>
+</br>
+</br>
+<%= link_to 'Back', :back %>

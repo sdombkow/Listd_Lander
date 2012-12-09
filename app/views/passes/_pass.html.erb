@@ -1,0 +1,38 @@
+<p>
+  <b>Name</b>
+  <%= pass.name %>
+</p>
+ 
+<p>
+  <b>Date</b>
+  <%= pass.pass_set.date%>
+</p>
+<p>
+  <b>Bar</b>
+  <%= pass.pass_set.bar.name%>
+</p>
+<p>
+  <b>Redeemed?</b>
+  <%= pass.redeemed%>
+</p>
+<table cellpadding="10">
+  <tr>
+    <th>Name on Valid ID</th>
+    <th>Entry Date</th>
+    <th>Bar</th>
+	<th>Number of Entries</th>
+    <th>Purchase Date</th>
+    <th>Redeemed?</th>
+  </tr>
+
+<% @passes.each do |pass| %>
+  <tr>
+    <td><%=  pass.name %></td>
+    <td><%=  pass.pass_set.date %></td>
+    <td><%= pass.pass_set.bar.name %></td>
+    <td></td>
+    <td><%= pass.redeemed %></td>
+  </tr>
+<% end %>
+</table>
+

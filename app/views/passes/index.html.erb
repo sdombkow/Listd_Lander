@@ -1,0 +1,23 @@
+<h2>My Passes</h2>
+<table cellpadding="10">
+  <tr>
+    <th>Name on Valid ID</th>
+    <th>Entry Date</th>
+    <th>Bar</th>
+	<th>Number of Entries</th>
+    <th>Purchase Date</th>
+    <th>Redeemed?</th>
+  </tr>
+
+<% @passes.each do |pass| %>
+  <tr>
+    <td><%= pass.name %></td>
+    <td><%= pass.pass_set.date %></td>
+    <td><%= pass.pass_set.bar.name %></td>
+	<td><%= pass.entries %></td>
+    <td><%= pass.created_at%></td>
+    <td><%= pass.redeemed %></td>
+  </tr>
+<% end %>
+</table>
+

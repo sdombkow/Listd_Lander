@@ -1,0 +1,52 @@
+<h2>User Information</h2>
+<p>User: <%= @user.name %></p>
+<p>Email: <%= @user.email if @user.email %></p>
+<p>Registered on: <%= @user.created_at %> </p>
+<p>Last Logged in at: <%=@user.last_sign_in_at %></p>
+<% if @user.partner? %>
+<% if @bars.empty? %>
+</br>
+</br>
+<h5> This partner has no locations </h5>
+<% else %>
+<table cellpadding="10">
+  <tr>
+    <th>Bar Name</th>
+    <th>Address</th>
+    <th></th>
+	<th></th>
+  </tr>
+
+<% @bars.each do |bar| %>
+  <tr>
+    <td><%= bar.name %></td>
+    <td><%= bar.address %></td>
+	<td><%= link_to "View Information", user_bar_path(@user, :id => bar.id), :method=>:get %></td>
+	<td>  <%= link_to 'Delete Bar Location', [@user,bar],
+               :confirm => 'Are you sure?',
+               :method => :delete %> </td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+<% else %>
+<p> user is a user </p>
+<% end %>
+
+</br>
+</br>
+<p>
+  <%= link_to 'Delete User', [@user],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
+			   
+			   <% if(@user.partner?) %>
+			       <%= link_to 'Unset Partner', users_unsetPartner_path(@user, :id => @user.id), :method=>:post %> |
+					<%= link_to 'Add a bar location', new_user_bar_path(@user, :id => @user.id), :method=>:get %> |
+					<%= link_to 'Back', admin_partners_path %>
+			   <% else %>
+			   	   <%= link_to 'Set Partner', users_setPartner_path(@user, :id => @user.id), :method=>:post %> |
+				   <%= link_to 'Back', admin_customers_path %>
+			   <%end%>
+</p>
+

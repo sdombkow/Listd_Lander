@@ -1,0 +1,24 @@
+<h1>Admin#partners</h1>
+<p>Find me in app/views/admin/partners.html.erb</p>
+</br>
+<p>    <%= link_to 'Show Registered Customers', 'customers' %> </p>
+
+<table cellpadding="10">
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th></th>
+  </tr>
+ 
+<% @partners.each do |partner| %>
+  <tr>
+    <td><%= partner.email %></td>
+    <td><%= partner.name %></td>
+	<td><%= link_to "View Information", partner %></td>
+  </tr>
+<% end %>
+</table>
+
+</br>
+</br>
+<%= link_to "Home", root_url %>
