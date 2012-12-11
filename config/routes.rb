@@ -1,4 +1,6 @@
 ListdApp::Application.routes.draw do
+  get "current_user/update"
+
   post "users/setPartner"
 
   post "users/unsetPartner"

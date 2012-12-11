@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 	@bars = @user.bars
   end
   
-  
   def setPartner 
     @user = User.find(params[:id])
 	@user.partner=true

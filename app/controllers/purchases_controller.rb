@@ -12,6 +12,7 @@ class PurchasesController < ApplicationController
 		@purchase = Purchase.new(params[:purchase])
 		@purchase.user_id = @user.id
 		@purchase.date = params[:purchase][:date]
+		@purchase.price = @purchase.integer_convert(@pass_set.price)
 		
 		logger.error "Stripe error while creating customer: #{@user.stripe_customer_token}"
 		if @user.stripe_customer_token != nil
