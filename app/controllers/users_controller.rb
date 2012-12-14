@@ -65,7 +65,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     current_user.stripe_card_token = @user.stripe_card_token
     logger.error "Stripe error while creating customer: #{current_user.stripe_customer_token} and #{current_user.stripe_card_token}"
-    current_user.save_token
+    if current_user.stripe_customer_token != nil
+      current_user.save_token
+    else
+      current_user.create_token
+    end
     redirect_to "/users"
   end
   

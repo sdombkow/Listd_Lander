@@ -34,14 +34,27 @@ class User < ActiveRecord::Base
   
   def save_token
     if valid?
-      logger.error "Stripe Card Token: #{name} and #{stripe_card_token}"
+      logger.error "Stripe Card Token: #{name} and #{stripe_card_token} and #{stripe_customer_token}"
+          cu = Stripe::Customer.retrieve(stripe_customer_token)
+          cu.card = stripe_card_token
+          cu.save
+          logger.error "Stripe Customer Token: #{stripe_customer_token}"
+    end
+        rescue Stripe::InvalidRequestError => e
+            logger.error "Stripe error while creating customer: #{e.message}"
+            errors.add :base, "There was a problem with your credit card."
+            false
+  end
+  
+  def create_token
+    if valid?
+      logger.error "Stripe Card Token: #{name} and #{stripe_card_token} and #{stripe_customer_token}"
       customer = Stripe::Customer.create(
-        :card => stripe_card_token,
-        :description => name
+      :card => stripe_card_token,
+      :description => name
       )
       self.stripe_customer_token = customer.id
       self.stripe_card_token = nil
-      logger.error "Stripe Customer Token: #{stripe_customer_token}"
       self.save!
       logger.error "Stripe Customer Token: #{stripe_customer_token}"
     end
@@ -49,6 +62,5 @@ class User < ActiveRecord::Base
         logger.error "Stripe error while creating customer: #{e.message}"
         errors.add :base, "There was a problem with your credit card."
         false
-    end
-  
+  end
 end
