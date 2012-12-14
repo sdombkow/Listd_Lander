@@ -8,7 +8,7 @@ jQuery ->
 
 current_user =
   setupForm: ->
-    $('#new_current_user').submit ->
+    $('#credit_form').submit ->
       $('input[type=submit]').attr('disabled', true)
       if $('#card_number').length
        	current_user.processCard()
@@ -27,8 +27,8 @@ current_user =
   
   handleStripeResponse: (status, response) ->
     if status == 200
-      $('#current_user_stripe_card_token').val(response.id)
-      $('#new_current_user')[0].submit()
+      $('#user_stripe_card_token').val(response.id)
+      $('#credit_form')[0].submit()
     else
       $('#stripe_error').text(response.error.message)
       $('input[type=submit]').attr('disabled', false)

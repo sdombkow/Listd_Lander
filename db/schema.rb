@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211181641) do
+ActiveRecord::Schema.define(:version => 20121214012442) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20121211181641) do
     t.string   "provider"
     t.string   "uid"
     t.string   "stripe_customer_token"
+    t.string   "stripe_card_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

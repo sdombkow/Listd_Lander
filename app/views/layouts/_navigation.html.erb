@@ -23,6 +23,9 @@
 	<% else %>
 	<li>
     <%= link_to 'My Passes', '/mypasses' %>
+	</li>
+	<li>
+	<%= link_to 'Credit Card Information', '/current_user/update'%>
     </li>
 	Logged in as user: <%= current_user.email %>.
 

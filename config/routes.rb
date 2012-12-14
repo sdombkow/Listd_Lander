@@ -1,5 +1,6 @@
 ListdApp::Application.routes.draw do
   get "current_user/update"
+  match "current_user/delete_stripe_token" => 'current_user#delete_stripe_token'
 
   post "users/setPartner"
 
