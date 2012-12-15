@@ -12,11 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree .
 $(document).ready(function() {
 
   $("select#search").change(function(){
     $(this).closest("form").submit();
+  });
+
+  // Prevent closing the sign in form on click
+  $("#dropdown-login").click(function(e) {
+     e.stopPropagation();
   });
 
 });
