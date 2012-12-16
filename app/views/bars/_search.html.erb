@@ -1,4 +1,6 @@
 <%= form_tag :controller => 'bars', :action => 'search', :method => 'get' do %>
-     <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-     <%= submit_tag "Search", :name => nil %> 
- <% end %> 
+  <div class="input-append">
+     <%= text_field_tag :search, params[:search], :id => 'search_field appendedInputButton' %>
+     <%= submit_tag "GO", :name => nil, :class => "btn btn-search" %> 
+  </div>
+<% end %>
