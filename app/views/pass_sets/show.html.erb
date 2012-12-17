@@ -1,14 +1,20 @@
+<div class="row">
+<div class="shadow span7" id="purchase-descr">
+<h3><%= @pass_set.unsold_passes %> available passes for <%= @pass_set.date.strftime("%B %d, %Y") %></h3>
+
 <p>
   <b>Bar:</b>
-  <%= @pass_set.bar.name %>
-</p>
-
-<p>
+  <%= @pass_set.bar.name %><br>
   <b>Date:</b>
-  <%= @pass_set.date %>
-</p>
+  <%= @pass_set.date.strftime("%m/%d/%Y") %><br>
+  <b>Passes Left:</b>
+  <%= @pass_set.unsold_passes %><br>
+  <b>Price:</b>
+  $<%= @pass_set.price %><br>
+</div>
+</div>
 
-<p>
+<!-- <p>
   <b>Total released passes:</b>
   <%= @pass_set.total_released_passes %>
 </p>
@@ -16,17 +22,9 @@
 <p>
   <b>Sold passes:</b>
   <%= @pass_set.sold_passes %>
-</p>
+</p> -->
 
-<p>
-  <b>Unsold passes:</b>
-  <%= @pass_set.unsold_passes %>
-</p>
 
-<p>
-  <b>Price:</b>
-  <%= @pass_set.price %>
-</p>
 
 </br>
 <% if current_user.partner? || current_user.admin? %>
