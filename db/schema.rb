@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205172529) do
+ActiveRecord::Schema.define(:version => 20121214012442) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20121205172529) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "entries",     :default => 0
+    t.integer  "price"
   end
 
   add_index "passes", ["pass_set_id"], :name => "index_passes_on_Pass_Set_id"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20121205172529) do
     t.string   "provider"
     t.string   "uid"
     t.string   "stripe_customer_token"
+    t.string   "stripe_card_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

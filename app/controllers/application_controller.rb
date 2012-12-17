@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+
 def isPartner?
 	if current_user.admin?
 	else

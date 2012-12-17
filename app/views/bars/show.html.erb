@@ -67,19 +67,18 @@
     <th>Sold passes</th>
     <th>Unsold passes</th>
     <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Purchase?</th>
   </tr>
 
 <% @pass_sets.each do |pass_set| %>
   <tr>
-    <td><%= pass_set.date.strftime("%d %a") %></td>
+    <td><%= pass_set.date %></td>
     <td><%= pass_set.total_released_passes %></td>
     <td><%= pass_set.sold_passes %></td>
     <td><%= pass_set.unsold_passes %></td>
     <td><%= pass_set.price %></td>
 <%end%>
+
 	<%if(current_user.admin?) %>
     <td><%= link_to 'Show Purchased Tickets', [@bar.user, @bar, pass_set] %></td>
 	<td><%= link_to 'Edit', edit_user_bar_pass_set_path(@bar.user, @bar, pass_set) %></td>
@@ -107,4 +106,3 @@
 <%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
 <%= link_to 'Back', root_path %>
 <%end%>
-

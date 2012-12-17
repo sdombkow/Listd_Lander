@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :isAdmin? , :except => [:index]
+  before_filter :isAdmin? , :except => [:index, :update]
   def index
     @user=current_user
     
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 	@bars = @user.bars
   end
-  
   
   def setPartner 
     @user = User.find(params[:id])
@@ -60,6 +59,18 @@ class UsersController < ApplicationController
       format.json { head :no_content }
 	  end
   end
+  end
+  
+  def update
+    @user = User.new(params[:user])
+    current_user.stripe_card_token = @user.stripe_card_token
+    logger.error "Stripe error while creating customer: #{current_user.stripe_customer_token} and #{current_user.stripe_card_token}"
+    if current_user.stripe_customer_token != nil
+      current_user.save_token
+    else
+      current_user.create_token
+    end
+    redirect_to "/users"
   end
   
 end
