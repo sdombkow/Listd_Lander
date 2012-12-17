@@ -44,6 +44,70 @@
   <%= @bar.intro_paragraph %>
 </p>
 
+<p>
+  <b>Monday</b>
+  <% if @bar.open_monday = false %>
+		<p>
+			Open From <%= @bar.houropen_monday %> to <%=@bar.hourclose_monday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Tuesday</b>
+  <% if @bar.open_tuesday = false %>
+		<p>
+			Open From <%= @bar.houropen_tuesday %> to <%=@bar.hourclose_tuesday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Wednesday</b>
+  <% if @bar.open_wednesday = false %>
+		<p>
+			Open From <%= @bar.houropen_wednesday %> to <%=@bar.hourclose_wednesday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Thursday</b>
+  <% if @bar.open_thursday = false %>
+		<p>
+			Open From <%= @bar.houropen_thursday %> to <%=@bar.hourclose_thursday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Friday</b>
+  <% if @bar.open_friday = false %>
+		<p>
+			Open From <%= @bar.houropen_friday %> to <%=@bar.hourclose_friday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Saturday</b>
+  <% if @bar.open_saturday = false %>
+		<p>
+			Open From <%= @bar.houropen_saturday %> to <%=@bar.hourclose_saturday%>
+		</p>
+  <% end %>
+</p>
+
+<p>
+  <b>Sunday</b>
+  <% if @bar.open_sunday = false %>
+		<p>
+			Open From <%= @bar.houropen_sunday %> to <%=@bar.hourclose_sunday%>
+		</p>
+  <% end %>
+</p>
+
+
 <body onload="initialize()">
 	<div id="map_canvas" style="width: 725px; height: 400px"></div>
 </body>
