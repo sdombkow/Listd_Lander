@@ -1,3 +1,41 @@
 // Place all the styles related to the Passes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* my passes page */
+
+#purchased-pass {
+  background: url('pass_bg.png') no-repeat;
+  width: 290px;
+  height: 450px;
+  border: 1px solid #000;
+  margin-bottom: 2%;
+  line-height: 24px;
+}
+
+#purchased-pass p {
+  color: #fff;
+}
+
+#pass-info {
+  height: 230px;
+  margin: 130px 25px 10px 25px;
+}
+
+#pass-info p {
+  color: #ccc;
+  font-size: 46px;
+  line-height: 60px;
+}
+
+#pass-name {
+  height: 65px;
+  margin: 0 10px;
+}
+
+#pass-name p {
+  color: #888;
+  font-size: 32px;
+  line-height: 1.75;
+  text-transform: uppercase;
+}

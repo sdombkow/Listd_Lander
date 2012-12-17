@@ -1,3 +1,21 @@
-<h3>Home</h3>
-<p> Sign up or Login to gain Listd access! </p>
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<div id="banner" class="row-fluid">
+  <div class="span4 center-text">
+	<%= image_tag("phone.png", alt: "App") %>
+  </div>
+  <div class="span8" id="banner-content">
+	<%= image_tag("get_listed_text.png", alt: "Get Listed") %>
+	<p class="lead"> Purchase passes for you and your friends to get into your favorite spots without having to wait in line. </p>
+	<%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
+  </div>
+</div> <!-- end of #banner -->
+<div id="steps" class="row-fluid">
+  <div class="span4" id="one">
+	<p> Browse for bars near you.  Find available passes for the bar you've selected. </p>
+  </div>
+  <div class="span4" id="two">
+	<p> Purchase passes for you and your friends through our online payment system. </p>
+  </div>
+  <div class="span4" id="three">
+	<p> Give your name or show your pass at the door and you're in. </p>
+  </div>
+</div> <!-- end of #steps -->

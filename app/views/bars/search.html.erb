@@ -1,8 +1,13 @@
-<h3>Search for a bar</h3>
-<div id="search">
-        <%= render 'bars/search' %>
-      </div>
-<h3> Search Results </h3>
-<%= render 'bars/search_results' %>
-</br>
-<%= link_to "Back", :back%>
+<div class="hero-unit row">
+  <h3>Search for a bar</h3>
+  <div id="search">
+    <%= render 'bars/search' %>
+  </div>
+  </br>
+  <h3> Search Results </h3>
+  <div id="search-results">
+    <%= render 'bars/search_results' %>
+  </div>
+  </br>
+  <%= link_to "Back", :back, :class => "btn" %>
+</div>

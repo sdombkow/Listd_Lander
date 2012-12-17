@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= controller_name %> <%= action_name %>">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "App_Name" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "App_Name" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <title><%= content_for?(:title) ? yield(:title) : "Listd" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Listd" %>">
+    <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
     <%= csrf_meta_tags %>
 	<%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= yield(:head) %>
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
+	<div id="container">
+      <header class="navbar navbar-fixed-top navbar-inverse">
+        <nav class="navbar-inner">
+          <div class="container">
+	  	    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		      <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+		    <%= link_to "Listd", root_path, id: "logo" %>
+	        <div class="nav-collapse">
+              <%= render 'layouts/navigation' %>
             </div>
           </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+        </nav>
+      </header>
+      <div id="main" role="main">
+        <div class="container">
+          <div class="content">
+             <div class="row">
+              <div class="span12">
+                <%= render 'layouts/messages' %>
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end of .container -->  
+      </div> <!-- end of #main -->
+	  <div class="clearfooter"></div>
+	</div>
+	<%= render 'layouts/footer' %>
   </body>
 </html>

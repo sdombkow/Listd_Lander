@@ -1,21 +1,18 @@
 <% if(@bars.empty?) %>
-<h5> There are no bar locations with the searched name </h5>
+  <h5> There are no bar locations with the searched name </h5>
 <% else %>
-<table cellpadding="2">
-  <tr>
-    <th>Bar Name</th>
-    <th>Address</th>
-    <th></th>
-	<th></th>
-  </tr>
 
 <% @bars.each do |bar| %>
-  <tr>
-    <td><%= bar.name %></td>
-    <td><%= bar.address %></td>
-	<td><%= link_to "View Bar", bar %></td>
-  </tr>
+<div class="row">
+  <div class="bar-preview span4 shadow">
+    <h5> <%= link_to bar.name, bar %> </h5>
+    <address>
+	  <small> <%= bar.address %> <br>
+        <abbr title="Phone">P:</abbr> <%= bar.phone_number %>
+	  </small>
+	</address>
+  </div> <!-- end of .bar-preview -->
+</div>
 <% end %>
-</table>
 
 <%end%>

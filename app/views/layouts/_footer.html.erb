@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="container row">
+	<div class="span9">
+	  <nav class="span9">
+	    <ul>
+          <li><small><%= link_to "About Us",   '#' %></small></li>
+		  <li><small> | </small></li>
+	      <li><small><%= link_to "Customers", '#' %></small></li>
+	      <li><small> | </small></li>
+		  <li><small><%= link_to "Privacy Policy", '#' %></small></li>
+          <li><small> | </small></li>
+		  <li><small><%= link_to "Terms of Service", '#' %></small></li>
+		  <li><small> | </small></li>
+		  <li><small><%= link_to "Contact", '#' %></small></li>
+	    </ul>
+	  </nav>
+	  <small>&copy; LISTD, 2012. All rights reserved.</small>
+    </div>  <!-- end of .span9 -->
+	<div class="span3">
+	  <ul class="pull-right">
+	    <li><%= link_to image_tag("fb_icon.png", alt: "Facebook"), 'http://www.facebook.com/' %></li>
+	    <li><%= link_to image_tag("twitter_icon.png", alt: "Twitter"), 'http://www.twitter.com/' %></li>
+	    <li><%= mail_to("admin@listdnow.com", image_tag("mail_icon.png")) %></li>
+	  </ul>
+    </div> <!-- end of .span3 -->
+  </div> <!-- end of .container -->
+</footer>

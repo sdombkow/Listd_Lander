@@ -1,0 +1,32 @@
+<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href=”#”>
+   Login
+   <b class="caret"></b>
+</a>
+<ul id="dropdown-login" class="dropdown-menu" style="padding: 20px 20px 0px 20px;">
+  <%= form_for("user", :url => user_session_path) do |f| %>
+  <li>
+    <div class="control-group">
+       <div class="controls">
+          <%= f.text_field :email, :placeholder => "Email" %>
+       </div>
+     </div>
+  </li>
+  <li>
+    <div class="control-group">
+       <div class="controls">
+          <%= f.password_field :password, :placeholder => "Password" %>
+       </div>
+    </div>
+  </li>
+  <li>
+    <div class="control-group">
+       <div class="controls">
+          <%= f.check_box :remember_me %> <small>Remember me</small>
+       </div>
+    </div>
+  </li>
+  <li> <%= f.submit "Sign in", :class => "btn btn-block btn-primary" %> </li>
+  <li class="divider"></li>
+  <li> <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-block" %>  </li>
+  <% end %>
+</ul>

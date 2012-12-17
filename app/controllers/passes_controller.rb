@@ -4,7 +4,7 @@ class PassesController < ApplicationController
   	@passes = @user.passes.order('updated_at DESC')
   end
   
-  def toggleRedeem 
+  def toggleRedeem
    @pass = Pass.find(params[:id])
    if(@pass.redeemed?)
    @pass.redeemed=false

@@ -22,102 +22,45 @@
     </script>
 </head>
 
+<div class="row">
+  <div class="pull-left span7 shadow" id="bar-main">
+    <h3> <%= @bar.name %> </h3>
+    <address>
+	  <small> <%= @bar.address %> </small>
+    </address>
+    <body onload="initialize()">
+	  <div id="map map_canvas" style="width: 490px; height: 130px;"></div>
+    </body>
+  </div>
 
-<h1>  <%= @bar.name %> Information Page </h1>
-<p>
-  <b>Name:</b>
-  <%= @bar.name %>
-</p>
+  <div class="pull-left span3 shadow" id="bar-info">
+    <h5>Contact</h5>
+    <small><abbr title="Phone">P: </abbr><%= @bar.phone_number %></small><br><br>
+    <h5>Hours</h5>
+  </div>
+</div>
 
-<p>
-  <b>Phone number:</b>
-  <%= @bar.phone_number %>
-</p>
+<div class="clear row">
+  <% if @pass_sets.empty? %>
+    <div class="shadow span11 center-text" id="passes-none">
+      <h2>Sorry, there are no available passes at this time</h2>
+    </div>
+  <% else %>
+	<div class="shadow span11" id="passes-avail">
+	  <div class="div-header">
+        <h5>Available Passes</h5>
+	  </div>
+	  <% @pass_sets.each do |pass_set| %>
+		<div class="date-box span1 center-text">
+	      <p class="lead"><%= link_to pass_set.date.strftime("%d"), [@bar.user, @bar, pass_set] %></p>
+		  <div><%= link_to pass_set.date.strftime("%a"), [@bar.user, @bar, pass_set] %></div>
+		</div>
+	  <% end %>
+	</div>
+</div>
 
-<p>
-  <b>Address:</b>
-  <%= @bar.address %>
-</p>
-
-<p>
-  <b>Intro paragraph:</b>
-  <%= @bar.intro_paragraph %>
-</p>
-
-<p>
-  <b>Monday</b>
-  <% if @bar.open_monday = false %>
-		<p>
-			Open From <%= @bar.houropen_monday %> to <%=@bar.hourclose_monday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Tuesday</b>
-  <% if @bar.open_tuesday = false %>
-		<p>
-			Open From <%= @bar.houropen_tuesday %> to <%=@bar.hourclose_tuesday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Wednesday</b>
-  <% if @bar.open_wednesday = false %>
-		<p>
-			Open From <%= @bar.houropen_wednesday %> to <%=@bar.hourclose_wednesday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Thursday</b>
-  <% if @bar.open_thursday = false %>
-		<p>
-			Open From <%= @bar.houropen_thursday %> to <%=@bar.hourclose_thursday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Friday</b>
-  <% if @bar.open_friday = false %>
-		<p>
-			Open From <%= @bar.houropen_friday %> to <%=@bar.hourclose_friday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Saturday</b>
-  <% if @bar.open_saturday = false %>
-		<p>
-			Open From <%= @bar.houropen_saturday %> to <%=@bar.hourclose_saturday%>
-		</p>
-  <% end %>
-</p>
-
-<p>
-  <b>Sunday</b>
-  <% if @bar.open_sunday = false %>
-		<p>
-			Open From <%= @bar.houropen_sunday %> to <%=@bar.hourclose_sunday%>
-		</p>
-  <% end %>
-</p>
-
-
-<body onload="initialize()">
-	<div id="map_canvas" style="width: 725px; height: 400px"></div>
-</body>
-
-
-<% if @pass_sets.empty? %>
-<h2>No Pass Sets available</h2>
-<% else %>
-<h2>Available Pass Sets</h2>
-<table class="table table-hover table-striped" cellpadding="10">
+<%if(current_user.admin?) %>
+<table cellpadding="10">
   <tr>
     <th>Date</th>
     <th>Total released passes</th>
@@ -134,6 +77,8 @@
     <td><%= pass_set.sold_passes %></td>
     <td><%= pass_set.unsold_passes %></td>
     <td><%= pass_set.price %></td>
+<%end%>
+
 	<%if(current_user.admin?) %>
     <td><%= link_to 'Show Purchased Tickets', [@bar.user, @bar, pass_set] %></td>
 	<td><%= link_to 'Edit', edit_user_bar_pass_set_path(@bar.user, @bar, pass_set) %></td>
@@ -160,7 +105,4 @@
 <%elsif(current_user.partner?) %>
 <%= link_to 'Edit Bar Information', edit_bar_path(@bar) %> |
 <%= link_to 'Back', root_path %>
-<%else%>
-<%= link_to 'Home', root_path %>
 <%end%>
-

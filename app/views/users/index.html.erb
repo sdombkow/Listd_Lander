@@ -1,24 +1,25 @@
-<h1>Users Homepage for  <%=@user.name%></h1>
-
-<h3>Search for a bar</h3>
-<div id="search">
-        <%= render 'bars/search' %>
-      </div>
-<br />
-<p>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </p>
-<table class="table table-hover table-striped">
-  <tr>
-	<th>Bar Name</th>
-    <th>Address</th>
-    <th>Your Distance</th>
-    <th>View Bar</th>
-  </tr>
-  <% for location in @localvenues %>
+<div class="hero-unit row">
+  <!-- <h1>Users Homepage for  <%=@user.name%></h1> -->
+  <h3>Search for a bar</h3>
+  <div id="search">
+    <%= render 'bars/search' %>
+  </div>
+  <br />
+  <p>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </p>
+  <table>
+    <tr>
+	  <th>Bar Name</th>
+      <th>Address</th>
+      <th>Your Distance</th>
+    </tr>
+    <% for location in @localvenues %>
     <tr>
 	  <td><%= location.name%>
       <td><%= location.address %></td>
 	  <td><%= location.distance_to(@user_information[0].coordinates)%></td>
       <td><%= link_to "Show", location %></td>
     </tr>
-  <% end %>
-</table>
+
+    <% end %>
+  </table>
+</div>
