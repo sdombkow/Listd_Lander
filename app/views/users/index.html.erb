@@ -5,21 +5,22 @@
     <%= render 'bars/search' %>
   </div>
   <br />
-  <p>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </p>
-  <table>
-    <tr>
-	  <th>Bar Name</th>
-      <th>Address</th>
-      <th>Your Distance</th>
-    </tr>
+  <% if(@localvenues.empty?) %>
+	<h5> There are no bars located near your area </h5>
+  <% else %>
+	<h3>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </h3>
     <% for location in @localvenues %>
-    <tr>
-	  <td><%= location.name%>
-      <td><%= location.address %></td>
-	  <td><%= location.distance_to(@user_information[0].coordinates)%></td>
-      <td><%= link_to "Show", location %></td>
-    </tr>
-
-    <% end %>
-  </table>
+	  <div class="row">
+	    <div class="bar-preview span4 shadow">
+	      <h5> <%= link_to location.name, location %> </h5>
+	      <address>
+		    <small> <%= location.address %> <br>
+	          <abbr title="Phone">P:</abbr> <%= location.phone_number %> <br>
+			  Distance: <%= location.distance_to(@user_information[0].coordinates).round%> miles
+		    </small>
+		  </address>
+	    </div> <!-- end of .bar-preview -->
+ 	  </div>
+	<% end %>
+  <%end%>
 </div>

@@ -10,7 +10,7 @@
   <b>Passes Left:</b>
   <%= @pass_set.unsold_passes %><br>
   <b>Price:</b>
-  $<%= @pass_set.price %><br>
+  $<%= @pass_set.price.round %><br>
 </div>
 </div>
 
@@ -22,7 +22,6 @@
 <p>
   <b>Sold passes:</b>
   <%= @pass_set.sold_passes %>
-<<<<<<< HEAD
 </p> -->
 
 </br>
