@@ -1,4 +1,20 @@
-<div class="row">
+<!-- Version 2 -->
+<div>
+  <legend>Summary of Available Passes</legend>
+  <dl class="dl-horizontal">
+    <dt>Bar</dt>
+    <dd><%= @pass_set.bar.name %></dd>
+	<dt>Date</dt>
+	<dd><%= @pass_set.date.strftime("%m/%d/%Y") %></dd>
+	<dt>Passes Left</dt>
+	<dd><%= @pass_set.unsold_passes %></dd>
+	<dt>Price</dt>
+	<dd>$<%= @pass_set.price.round %></dd>
+  </dl>
+</div>
+
+<!-- Version 1 -->
+<!-- <div class="row">
 <div class="shadow span7" id="purchase-descr">
 <h3><%= @pass_set.unsold_passes %> available passes for <%= @pass_set.date.strftime("%B %d, %Y") %></h3>
 
@@ -11,8 +27,9 @@
   <%= @pass_set.unsold_passes %><br>
   <b>Price:</b>
   $<%= @pass_set.price.round %><br>
+</p>
 </div>
-</div>
+</div> -->
 
 <!-- <p>
   <b>Total released passes:</b>
@@ -59,7 +76,7 @@
   <%= f.hidden_field :date,:value => @pass_set.date %>
   <%= f.hidden_field :bar,:value =>  @bar.id %>
   <div class="control-group">
-	<%= f.label "Number of Tickets: ", class: "control-label" %>
+	<%= f.label "Number of Tickets", class: "control-label" %>
   	<div class="controls">
 	  <%= f.select :num_passes, (1..5) %>
   	  <%= f.hidden_field :pass_set,:value =>  @pass_set.id %>

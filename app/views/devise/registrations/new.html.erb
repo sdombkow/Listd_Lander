@@ -1,9 +1,9 @@
-<div class="hero-unit" id="signup-form">
+<div class="hero-unit registration-form">
   <h2>Sign up</h2>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal row"} ) do |f| %>
   <div class="span8 offset2">
     <!-- <%= devise_error_messages! %> -->
-    <%= f.input :name %>
+    <%= f.input :name, :autofocus => true %>
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>

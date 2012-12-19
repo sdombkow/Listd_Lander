@@ -1,21 +1,10 @@
-/* sign up */
-
-#signup-form .form-actions {
+.registration-form .form-actions {
   background: none;
   border-top: none;
   border-bottom: 1px solid #ccc;
 }
 
-
-/* edit user */
-
-#edit-user-form .form-actions {
-  background: none;
-  border-top: none;
-  border-bottom: 1px solid #ccc;
-}
-
-#edit-user-form p {
+.registration-form p {
   font-size: 12px;
   margin-top: 0px;
 }
