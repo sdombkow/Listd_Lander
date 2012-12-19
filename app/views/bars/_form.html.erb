@@ -30,6 +30,122 @@
     <%= f.label :intro_paragraph %><br />
     <%= f.text_area :intro_paragraph %>
   </div>
+  <div class="field">
+    <%= f.label :logo %><br />
+    <%= f.text_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label :website_url %><br />
+    <%= f.text_field :website_url %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook_url %><br />
+    <%= f.text_field :facebook_url %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_url %><br />
+    <%= f.text_field :twitter_url %>
+  </div>
+
+  	<h3>Monday</h3>
+		<div class="field">
+	    	<%= f.label :open_monday %><br />
+	    	<%= f.check_box :open_monday %>
+	  	</div>
+  		<div>
+    		<%= f.label :houropen_monday %><br />
+    		<%= f.time_select :houropen_monday %>
+  		</div>
+  		<div>
+    		<%= f.label :hourclose_monday %><br />
+    		<%= f.time_select :hourclose_monday %>
+  		</div>
+
+	<h3>Tuesday</h3>
+		<div class="field">
+		    <%= f.label :open_tuesday %><br />
+		    <%= f.check_box :open_tuesday %>
+		  </div>
+	  	<div>
+	    	<%= f.label :houropen_tuesday %><br />
+	    	<%= f.time_select :houropen_tuesday %>
+	  	</div>
+	  	<div>
+	    	<%= f.label :hourclose_tuesday %><br />
+	    	<%= f.time_select :hourclose_tuesday %>
+	  	</div>
+		
+	<h3>Wednesday</h3>
+		<div class="field">
+			<%= f.label :open_wednesday %><br />
+			<%= f.check_box :open_wednesday %>
+		</div>
+		<div>
+		   	<%= f.label :houropen_wednesday %><br />
+		    <%= f.time_select :houropen_wednesday %>
+		</div>
+		<div>
+		    <%= f.label :hourclose_wednesday %><br />
+		    <%= f.time_select :hourclose_wednesday %>
+		</div>
+
+	<h3>Thursday</h3>
+		<div class="field">
+			<%= f.label :open_thursday %><br />
+			<%= f.check_box :open_thursday %>
+		</div>
+		<div>
+			<%= f.label :houropen_thurssday %><br />
+			<%= f.time_select :houropen_thursday %>
+		</div>
+		<div>
+			<%= f.label :hourclose_thurssday %><br />
+			<%= f.time_select :hourclose_thursday %>
+		</div>
+	
+	<h3>Friday</h3>
+		<div class="field">
+			<%= f.label :open_friday %><br />
+			<%= f.check_box :open_friday %>
+		</div>
+		<div>
+			<%= f.label :houropen_friday %><br />
+			<%= f.time_select :houropen_friday %>
+		</div>
+		<div>
+			<%= f.label :hourclose_friday %><br />
+			<%= f.time_select :hourclose_friday %>
+		</div>
+			
+	<h3>Saturday</h3>
+		<div class="field">
+			<%= f.label :open_saturday %><br />
+			<%= f.check_box :open_saturday %>
+		</div>
+		<div>
+			<%= f.label :houropen_saturday %><br />
+			<%= f.time_select :houropen_saturday %>
+		</div>
+		<div>
+			<%= f.label :hourclose_saturday %><br />
+			<%= f.time_select :hourclose_saturday %>
+		</div>
+				
+	<h3>Sunday</h3>
+		<div class="field">
+			<%= f.label :open_sunday %><br />
+			<%= f.check_box :open_sunday %>
+		</div>
+		<div>
+			<%= f.label :houropen_sunday %><br />
+			<%= f.time_select :houropen_sunday %>
+		</div>
+		<div>
+			<%= f.label :hourclose_sunday %><br />
+			<%= f.time_select :hourclose_sunday %>
+		</div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

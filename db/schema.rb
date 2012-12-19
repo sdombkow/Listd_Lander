@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214012442) do
+ActiveRecord::Schema.define(:version => 20121217193330) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,35 @@ ActiveRecord::Schema.define(:version => 20121214012442) do
     t.string   "address"
     t.text     "intro_paragraph"
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "logo"
+    t.string   "website_url"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.boolean  "open_monday"
+    t.boolean  "open_tuesday"
+    t.boolean  "open_wednesday"
+    t.boolean  "open_thursday"
+    t.boolean  "open_saturday"
+    t.boolean  "open_sunday"
+    t.time     "houropen_monday"
+    t.time     "houropen_tuesday"
+    t.time     "hourclose_tuesday"
+    t.time     "hourclose_wednesday"
+    t.time     "houropen_wednesday"
+    t.time     "houropen_thursday"
+    t.time     "hourclose_thursday"
+    t.time     "houropen_friday"
+    t.time     "hourclose_friday"
+    t.time     "houropen_saturday"
+    t.time     "hourclose_saturday"
+    t.time     "hourclose_sunday"
+    t.boolean  "open_friday"
+    t.time     "hourclose_monday"
+    t.time     "houropen_sunday"
   end
 
   add_index "bars", ["user_id"], :name => "index_bars_on_user_id"
