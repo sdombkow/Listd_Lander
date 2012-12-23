@@ -88,6 +88,8 @@
       <%= f.text_field :name %> <small>(Must match Valid ID)</small>
     </div>
   </div>
+
+  <legend>Purchase Information</legend>
   <% if current_user.stripe_customer_token == nil %>
 	<div class="field control-group">
 	  <%= label_tag :card_number, "Credit Card Number", class: "control-label" %>
