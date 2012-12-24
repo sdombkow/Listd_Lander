@@ -16,8 +16,9 @@ class PassSetsController < ApplicationController
   def show
     @bar = Bar.find(params[:bar_id])
     @pass_set = PassSet.find(params[:id])
-	@passes = @pass_set.passes
+	  @passes = @pass_set.passes
     @purchase = Purchase.new
+    @full_bar_path = "http://#{request.host}" + (bar_path @pass_set.bar).to_s
     @open_graph = false
     if flash[:notice] == 'Purchase created'
       @open_graph = true

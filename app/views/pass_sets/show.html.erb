@@ -1,3 +1,23 @@
+<% content_for :head do %>
+<script type="text/javascript">
+	function getlistd()
+	{
+	  FB.getLoginStatus() 
+	  FB.api(
+	    '/me/listdnow:get_listd_for',
+	    'post',
+	    { bar: "<%= @full_bar_path %>" },
+	    function(response) {
+	       if (!response || response.error) {
+	          alert('Error occured');
+	       } else {
+	          alert('Listd action was successful! Action ID: ' + response.id);
+	       }
+	    });
+	}
+</script>
+<% end %>
+
 <!-- Version 2 -->
 <div>
   <legend>Summary of Available Passes</legend>
@@ -129,7 +149,7 @@
 			<br>
 		<% end %>
 	<div class="form-actions">
-      <%= f.submit "Submit", :class => "btn btn-primary" %>
+      <%= f.submit "Submit", :class => "btn btn-primary", :onclick => "return getlistd();" %>
 	  <%= link_to 'Cancel', :back, :class => "btn" %>
     </div>
 </fieldset>
