@@ -1,4 +1,7 @@
 class PassesController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   def index
   	@user = current_user
   	@passes = @user.passes.order('updated_at DESC')
