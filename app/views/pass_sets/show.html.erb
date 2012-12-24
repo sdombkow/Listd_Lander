@@ -8,11 +8,6 @@
 	    'post',
 	    { bar: "<%= @full_bar_path %>" },
 	    function(response) {
-	       if (!response || response.error) {
-	          alert('Error occured');
-	       } else {
-	          alert('Listd action was successful! Action ID: ' + response.id);
-	       }
 	    });
 	}
 </script>
