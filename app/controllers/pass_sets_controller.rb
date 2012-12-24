@@ -18,6 +18,10 @@ class PassSetsController < ApplicationController
     @pass_set = PassSet.find(params[:id])
 	@passes = @pass_set.passes
     @purchase = Purchase.new
+    @open_graph = false
+    if flash[:notice] == 'Purchase created'
+      @open_graph = true
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @pass_set }

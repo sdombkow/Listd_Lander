@@ -17,7 +17,8 @@ class BarsController < ApplicationController
   # GET /bars/1.json
   def show
     @bar = Bar.find(params[:id])
-	@user = @bar.user
+	 @user = @bar.user
+   @full_path = "http://#{request.host+request.fullpath}"
     @pass_sets = @bar.pass_sets.order(:created_at)
     respond_to do |format|
       format.html # show.html.erb

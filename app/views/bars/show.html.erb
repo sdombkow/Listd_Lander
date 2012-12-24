@@ -21,7 +21,13 @@
 		}
     </script>
 </head>
-
+<% content_for :head do %>
+  <meta property="fb:app_id" content="567808586566843" /> 
+  <meta property="og:type"   content="listdnow:bar" /> 
+  <meta property="og:url"    content="<%= @full_path %>" /> 
+  <meta property="og:title"  content="<%=@bar.name %>" /> 
+  <meta property="og:image"  content="http://cdn1.iconfinder.com/data/icons/Symbolicons_Drink/502/Drink_BeerPint.png"  /> 
+<% end %>
 <div class="row">
   <div class="pull-left span7 shadow" id="bar-main">
     <h3> <%= @bar.name %> </h3>
