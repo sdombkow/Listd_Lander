@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217193330) do
+ActiveRecord::Schema.define(:version => 20121223134117) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(:version => 20121217193330) do
     t.boolean  "open_friday"
     t.time     "hourclose_monday"
     t.time     "houropen_sunday"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "zip_code"
+    t.string   "state"
   end
 
   add_index "bars", ["user_id"], :name => "index_bars_on_user_id"

@@ -59,6 +59,9 @@
 	</div>
 </div>
 
+<% end %>
+
+
 <%if(current_user.admin?) %>
 <table cellpadding="10">
   <tr>
@@ -68,6 +71,9 @@
     <th>Unsold passes</th>
     <th>Price</th>
     <th>Purchase?</th>
+	<th></th>
+	<th></th>
+	<th></th>
   </tr>
 
 <% @pass_sets.each do |pass_set| %>
@@ -77,7 +83,6 @@
     <td><%= pass_set.sold_passes %></td>
     <td><%= pass_set.unsold_passes %></td>
     <td><%= pass_set.price %></td>
-<%end%>
 
 	<%if(current_user.admin?) %>
     <td><%= link_to 'Show Purchased Tickets', [@bar.user, @bar, pass_set] %></td>
@@ -94,6 +99,14 @@
 <% end %>
 </table>
 <% end %>
+
+</br>
+</br>
+</br>
+
+</br>
+</br>
+</br>
 
 <%if(current_user.admin?) %>
 <%= link_to 'New Pass set', new_user_bar_pass_set_path(@user,@bar) %> |
