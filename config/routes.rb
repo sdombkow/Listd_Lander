@@ -1,7 +1,7 @@
 ListdApp::Application.routes.draw do
   get "current_user/update"
   match "current_user/delete_stripe_token" => 'current_user#delete_stripe_token'
-
+  match '/activity_feed' => 'pages#facebook_activity'
   post "users/setPartner"
 
   post "users/unsetPartner"
