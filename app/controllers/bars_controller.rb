@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :isPartner? , :except => [:index,:search,:show]
   # GET /bars
   # GET /bars.json
