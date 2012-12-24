@@ -8,3 +8,10 @@
   font-size: 12px;
   margin-top: 0px;
 }
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .hero-unit {
+	padding: 10%;
+  }
+}

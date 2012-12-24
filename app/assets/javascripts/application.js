@@ -21,7 +21,7 @@ $(document).ready(function() {
   });
 
   // Prevent closing the sign in form on click
-  $("#dropdown-login").click(function(e) {
+  $(".dropdown-open").click(function(e) {
      e.stopPropagation();
   });
 
