@@ -2,13 +2,18 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :isAdmin? , :except => [:index, :update]
   def index
+  if current_user
     @user=current_user
-    
     #acquires users ip address for geolocating
     @user_info = request.ip
     @user_info = "98.122.189.233"
     #acquires all the needed information based on the users ip address
     @user_information = Geocoder.search(@user_info)
+	while @user_information.empty?
+	@user_information = Geocoder.search(@user_info)
+	end
+	#THIS WHILE LOOP FIXES THE NIL:CLASS CASE BUT IS PROBABLY NOT THE BEST WAY TO GO ABOUT IT
+	
     #finds all local venues within 10 miles of that users location, orders them based
     #on distance from the user
     @localvenues = Bar.near(@user_information[0].coordinates, 10, :order => :distance)
@@ -21,6 +26,7 @@ class UsersController < ApplicationController
     else
       @locations = @localvenues
     end
+	end
   end
 
   def show
