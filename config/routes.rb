@@ -3,6 +3,7 @@ ListdApp::Application.routes.draw do
   match "current_user/delete_stripe_token" => 'current_user#delete_stripe_token'
   match '/activity_feed' => 'pages#facebook_activity'
   post "users/setPartner"
+  match '/payment_management' => 'current_user#update'
 
   post "users/unsetPartner"
   post "passes/toggleRedeem"
