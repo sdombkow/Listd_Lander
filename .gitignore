@@ -28,10 +28,7 @@ db/*.sqlite3
 .redcar/
 .sass-cache
 /config/config.yml
-<<<<<<< HEAD
-/config/database.yml
-=======
->>>>>>> a5924ccaeedf05aa7f54d33ac129e48a2bf32054
+/config/geocoder.rb
 /coverage.data
 /coverage/
 /db/*.javadb/
