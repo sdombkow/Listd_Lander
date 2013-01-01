@@ -1,6 +1,7 @@
 class PassSetsController < ApplicationController
   # GET /pass_sets
   # GET /pass_sets.json
+  before_filter :authenticate_user!
   def index
     @bar = Bar.find(params[:bar_id])
     @pass_sets = @bar.pass_sets
