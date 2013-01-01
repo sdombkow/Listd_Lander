@@ -4,7 +4,7 @@ ListdApp::Application.routes.draw do
   match '/activity_feed' => 'pages#facebook_activity'
   post "users/setPartner"
   match '/payment_management' => 'current_user#update'
-
+  match 'welcome' => 'home#welcome'
   post "users/unsetPartner"
   post "passes/toggleRedeem"
   get "admin/customers"
@@ -25,11 +25,10 @@ ListdApp::Application.routes.draw do
   	end
   end
 
-  # authenticated :user do
-  # root :to => 'bars#index'
-  # end
+  authenticated :user do
+    root :to => 'home#welcome'
+  end
   root :to => "home#index"
-  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users do
 	  resources :bars do

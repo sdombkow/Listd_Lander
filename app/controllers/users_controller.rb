@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :isAdmin? , :except => [:index, :update]
   def index
-  if current_user
+  if user_signed_in?
     @user=current_user
     #acquires users ip address for geolocating
     @user_info = request.ip
