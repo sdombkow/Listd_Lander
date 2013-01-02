@@ -12,11 +12,11 @@ class HomeController < ApplicationController
     end
     
     #acquires users ip address for geolocating
-    @user_info3 = request.ip
+    @user_info1 = request.ip
     @user_info2 = request.remote_addr
     request.remote_ip
-    @user_info = request.env["HTTP_X_FORWARDED_FOR"]
-    #@user_info = "98.122.189.233"
+    @user_info3 = request.env["HTTP_X_FORWARDED_FOR"]
+    @user_info = "98.122.189.233"
     #acquires all the needed information based on the users ip address
     @user_information = Geocoder.search(@user_info)
     while @user_information.empty?
