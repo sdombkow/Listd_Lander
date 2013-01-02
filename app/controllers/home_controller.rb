@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     
     #acquires users ip address for geolocating
     @user_info = request.ip
-    @user_info = "98.122.189.233"
+    #@user_info = "98.122.189.233"
     #acquires all the needed information based on the users ip address
     @user_information = Geocoder.search(@user_info)
     while @user_information.empty?
