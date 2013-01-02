@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require bootstrap
+//= require_tree .
 $(document).ready(function() {
 
   $("select#search").change(function(){
