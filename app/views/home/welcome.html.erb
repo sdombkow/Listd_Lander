@@ -5,7 +5,7 @@
   </div>
   <br />
   <% if(@localvenues.empty?) %>
-	<h5> There are no bars located near your area </h5>
+	<h5> There are no bars located near <%=@user_information[0].city </h5>
   <% else %>
 	<h3>Bars Near <%=@user_information[0].city%>, <%=@user_information[0].state%> </h3>
     <% for location in @localvenues %>
@@ -23,3 +23,6 @@
 	<% end %>
   <%end%>
 </div>
+<p><%=user_info%></p>
+<p><%=user_info2%></p>
+<p><%=user_info3%></p>
