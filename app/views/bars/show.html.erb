@@ -58,8 +58,8 @@
 	  </div>
 	  <% @pass_sets.each do |pass_set| %>
 		<div class="date-box span1 center-text">
-	      <p class="lead"><%= link_to pass_set.date.strftime("%d"), [@bar.user, @bar, pass_set] %></p>
-		  <div><%= link_to pass_set.date.strftime("%a"), [@bar.user, @bar, pass_set] %></div>
+	      <p class="lead"><%= link_to pass_set.date.strftime("%d"), [@bar, pass_set] %></p>
+		  <div><%= link_to pass_set.date.strftime("%a"), [@bar, pass_set] %></div>
 		</div>
 	  <% end %>
 	</div>

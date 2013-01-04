@@ -30,8 +30,7 @@ ListdApp::Application.configure do
   :authentication       => "plain",  
   :enable_starttls_auto => true  
   }
-
-
+  ActionMailer::Base.default_url_options[:host] = "localhost:3000" 
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

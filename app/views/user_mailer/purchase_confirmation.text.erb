@@ -1,1 +1,9 @@
 Thank you for purchasing a pass!
+
+Link to ticket: <%= pass_url(@pass)%>
+
+Ticket Info
+Bar Name: <%= @pass.pass_set.bar.name %>
+Date: <%= @pass.pass_set.date.strftime("%m/%d/%Y") %>
+Number of Entrants: <%= @pass.entries %>
+Name on ID: <%= @pass.name %>

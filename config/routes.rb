@@ -16,6 +16,7 @@ ListdApp::Application.routes.draw do
 			end
 		end
   resources :admin
+  resources :passes
   get "passes/index"
   match '/mypasses' => 'passes#index'
   
@@ -31,7 +32,7 @@ ListdApp::Application.routes.draw do
   root :to => "home#index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users do
-	  resources :bars do
+	resources :bars do
   	resources :pass_sets
     collection do
       post 'search'

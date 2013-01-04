@@ -9,8 +9,10 @@
 	    <%= pass.pass_set.bar.name %><br>
 	    <br>
 		<%= pass.pass_set.date.strftime("%m/%d/%Y") %>
+		<br>
 	  </p>
-	</div>
+	  	<h5>Number of Entrants: <%= pass.entries %> </h5> 
+	</div>	
 	<div id="pass-name" class="center-text">
 	  <p class="lead"><%= pass.name %></p>
 	</div>
