@@ -29,6 +29,7 @@ class PurchasesController < ApplicationController
 				    pass.entries=num_passes
 			      pass.save
 		      #end
+		  UserMailer.purchase_confirmation(@user).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
@@ -47,6 +48,7 @@ class PurchasesController < ApplicationController
 				    pass.entries=num_passes
 			      pass.save
 		      #end
+		UserMailer.purchase_confirmation(@user).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
@@ -65,6 +67,7 @@ class PurchasesController < ApplicationController
 				    pass.entries=num_passes
 			      pass.save
 		      #end
+		  UserMailer.purchase_confirmation(@user).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'

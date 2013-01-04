@@ -70,10 +70,13 @@ ListdApp::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  :address   => "smtp.mandrillapp.com",
-  :port      => 25,
-  :user_name => "rohank12345@gmail.com",
-  :password  => "3321daf7-f3bf-4db6-bc34-ad24c7f7d1d6"
+  :address              => "smtp.gmail.com",  
+  :port                 => 587,  
+  :domain               => "mail.gmail.com",  
+  :user_name            => "listdtest@gmail.com",  
+  :password             => "listd2013",  
+  :authentication       => "plain",  
+  :enable_starttls_auto => true  
   }
 
 
