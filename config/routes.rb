@@ -9,6 +9,8 @@ ListdApp::Application.routes.draw do
   post "passes/toggleRedeem"
   get "admin/customers"
   get "admin/partners"
+  get "pages/terms_of_service"
+  get "pages/customers"
 	resources :bars do
   	resources :pass_sets
     collection do
