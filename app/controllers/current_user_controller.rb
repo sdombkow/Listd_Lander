@@ -9,6 +9,8 @@ class CurrentUserController < ApplicationController
   
   def update
     @user = current_user
+    @customer_card = Stripe::Customer.retrieve(current_user.stripe_customer_token)
+    @last_four = @customer_card.active_card.last4
     current_user.save!
   end
 end
