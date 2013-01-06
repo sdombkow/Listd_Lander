@@ -2,7 +2,6 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Google Maps JavaScript API v3 Example: Street View Layer</title>
-    <link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
       function initialize() {
@@ -45,6 +44,27 @@
     <h5>Contact</h5>
     <small><abbr title="Phone">P: </abbr><%= @bar.phone_number %></small><br><br>
     <h5>Hours</h5>
+	<% if @bar.open_monday %>
+	  <small>Mon: <%= @bar.houropen_monday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_monday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_tuesday %>
+	  <small>Tues: <%= @bar.houropen_tuesday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_tuesday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_wednesday %>
+	  <small>Wed: <%= @bar.houropen_wednesday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_wednesday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_thursday %>
+	  <small>Thurs: <%= @bar.houropen_thursday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_thursday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_friday %>
+	  <small>Fri: <%= @bar.houropen_friday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_friday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_saturday %>
+	  <small>Sat: <%= @bar.houropen_saturday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_saturday.strftime('%l:%M %p') %></small><br>
+	<% end %>
+	<% if @bar.open_sunday %>
+	  <small>Sun: <%= @bar.houropen_sunday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_sunday.strftime('%l:%M %p') %></small><br>
+	<% end %>
   </div>
 
   <% if @pass_sets.empty? %>
