@@ -5,7 +5,7 @@ class BarsController < ApplicationController
   # GET /bars.json
   def index
     @user=current_user
-	@bars = @user.bars
+	  @bars = @user.bars
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -17,10 +17,10 @@ class BarsController < ApplicationController
   # GET /bars/1.json
   def show
     @bar = Bar.find(params[:id])
-	 @user = @bar.user
-   @full_path = "http://#{request.host+request.fullpath}"
+	  @user = @bar.user
+    @full_path = "http://#{request.host+request.fullpath}"
     @pass_sets = @bar.pass_sets.where("date >= ?", Date.today).order(:date)
-	@expired_sets= @bar.pass_sets.where("date< ?", Date.today).order(:date)
+	  @expired_sets= @bar.pass_sets.where("date< ?", Date.today).order(:date)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bar }
@@ -68,7 +68,8 @@ class BarsController < ApplicationController
   end
 
 def search
-  @bars = Bar.search params[:search]
+  @search = params[:search]
+  @bars = Bar.search(@search)
 end
 
   # PUT /bars/1

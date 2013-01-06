@@ -8,9 +8,11 @@
     <h5> <%= link_to bar.name, bar %> </h5>
     <address>
 	  <small> <%= bar.address %> <br>
-        <abbr title="Phone">P:</abbr> <%= bar.phone_number %>
+        <abbr title="Phone">P:</abbr> <%= bar.phone_number %><br>
+		<%= link_to bar.website_url, "http://#{bar.website_url}"%>
 	  </small>
 	</address>
+	<small></small>
   </div> <!-- end of .bar-preview -->
 </div>
 <% end %>

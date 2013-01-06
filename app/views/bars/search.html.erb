@@ -1,13 +1,10 @@
-<div class="hero-unit">
-  <h3>Search for a bar</h3>
-  <div id="search">
-    <%= render 'bars/search' %>
+<div>
+  <div id="search-query" class="shadow">
+    Results for <span><%= @search %></span><br>
+	<small>Best Match</small>
   </div>
-  </br>
-  <h3> Search Results </h3>
   <div id="search-results">
     <%= render 'bars/search_results' %>
   </div>
   </br>
-  <%= link_to "Back", :back, :class => "btn" %>
 </div>
