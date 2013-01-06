@@ -8,8 +8,9 @@
 <%= render "credit_form" %>
 
 <h3>Current User Information</h3>
-<%= current_user.name %>
-<%= current_user.stripe_customer_token %>
+<p>We already have your credit card information.</p></br>
+<p>Last 4 numbers of Current Credit Card: <%= @last_four %></p>
+<p>Name on Credit Card: <%= current_user.name %></p>
 
 <% if current_user.stripe_customer_token != nil %>
 	<%= link_to "Delete Token", "/current_user/delete_stripe_token"%>

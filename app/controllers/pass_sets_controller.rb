@@ -19,6 +19,8 @@ class PassSetsController < ApplicationController
     @pass_set = PassSet.find(params[:id])
 	  @passes = @pass_set.passes
     @purchase = Purchase.new
+    @customer_card = Stripe::Customer.retrieve(current_user.stripe_customer_token)
+    @last_four = @customer_card.active_card.last4
     @full_bar_path = "http://#{request.host}" + (bar_path @pass_set.bar).to_s
     @open_graph = false
     if flash[:notice] == 'Purchase created'

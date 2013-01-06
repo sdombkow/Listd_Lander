@@ -42,7 +42,7 @@
 
   <div class="pull-left span3 shadow" id="bar-info">
     <h5>Contact</h5>
-    <small><abbr title="Phone">P: </abbr><%= @bar.phone_number %></small><br><br>
+    <small><abbr title="Phone">P: </abbr><%= number_to_phone(@bar.phone_number, :area_code => true) %></small><br><br>
     <h5>Hours</h5>
 	<% if @bar.open_monday %>
 	  <small>Mon: <%= @bar.houropen_monday.strftime('%l:%M %p') %> &ndash; <%= @bar.hourclose_monday.strftime('%l:%M %p') %></small><br>
