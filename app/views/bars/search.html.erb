@@ -1,7 +1,11 @@
 <div>
   <div id="search-query" class="shadow">
-    Results for <span><%= @search %></span><br>
-	<small>Best Match</small>
+	<% if @search.empty? %>
+	  Listing all bars
+	<% else %>
+      Results for <span><%= @search %></span><br>
+	  <small>Best Match</small>
+	<% end %>
   </div>
   <div id="search-results">
     <%= render 'bars/search_results' %>
