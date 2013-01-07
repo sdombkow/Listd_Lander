@@ -31,10 +31,17 @@ background-repeat: no-repeat;
 }
 
 #banner-content p {
-  margin: 38px 0 0 10%;
+  margin: 20px 0 0 10%;
   line-height: 24px;
-  color: #8b8a8a;
+  color: #000000;
   font-size: 18px;
+}
+
+#banner-content h3 {
+  margin: 30px 0 0 10%;
+  line-height: 24px;
+  color: #0A88CB;
+  font-size: 48px;
 }
 
 #banner-content a {
@@ -47,22 +54,23 @@ background-repeat: no-repeat;
 
 #steps #one {
   background: url('step_one.png') no-repeat;
-  padding: 10% 3% 10% 7%;
+  padding: 10% 3% 10% 5%;
 }
 
 #steps #two {
   background: url('step_two.png') no-repeat;
-  padding: 10% 3% 10% 7%;
+  padding: 10% 3% 10% 5%;
 }
 
 #steps #three {
   background: url('step_three.png') no-repeat;
-  padding: 10% 3% 10% 7%;
+  padding: 10% 3% 10% 5%;
 }
 
 #steps p {
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 /* Landscape phones and down */
