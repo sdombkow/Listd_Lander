@@ -1,24 +1,24 @@
-<h1>Admin#partners</h1>
-<p>Find me in app/views/admin/partners.html.erb</p>
+<h1>Registered Partners</h1>
 </br>
-<p>    <%= link_to 'Show Registered Customers', 'customers' %> </p>
 
-<table cellpadding="10">
+<table cellpadding="5">
   <tr>
-    <th>Email</th>
     <th>Name</th>
+    <th>Email</th>
     <th></th>
   </tr>
  
 <% @partners.each do |partner| %>
   <tr>
-    <td><%= partner.email %></td>
     <td><%= partner.name %></td>
+    <td><%= partner.email %></td>
 	<td><%= link_to "View Information", partner %></td>
   </tr>
 <% end %>
 </table>
-
+<%= will_paginate @partners, :previous_label => "Previous", :next_label => "Next" %>
 </br>
 </br>
+</br>
+<%= link_to 'Registered Customers', 'customers' %> </br>
 <%= link_to "Home", root_url %>

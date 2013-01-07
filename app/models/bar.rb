@@ -1,4 +1,9 @@
 class Bar < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name
+  
+  validates :name, :uniqueness => true
+  
   attr_accessible :address, :latitude, :longitude, :name, :phone_number, :logo, :intro_paragraph, :website_url, 
   :facebook_url,:twitter_url,:open_monday, :open_tuesday,:open_wednesday,:open_thursday,:open_saturday,
   :open_sunday,:houropen_monday,:houropen_tuesday,:hourclose_tuesday,:hourclose_wednesday,:houropen_wednesday,
@@ -13,8 +18,10 @@ class Bar < ActiveRecord::Base
 
 	def self.search(search)
 	  search_condition = "%" + search + "%"
-	  find(:all, :conditions => ['name LIKE ?', search_condition])
+	  find(:all, :conditions => ['upper(name) LIKE ?', search_condition.upcase])
 	end
 	
+	
+
 	belongs_to :user
 end

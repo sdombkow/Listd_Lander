@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+	class PurchasesController < ApplicationController
 	def create
 		@user = current_user
 		@bar = Bar.find(params[:purchase][:bar])
@@ -26,9 +26,11 @@ class PurchasesController < ApplicationController
 			      pass.purchase_id = @purchase.id
 			      pass.pass_set_id = @pass_set.id
 			      pass.redeemed = false
-				    pass.entries=num_passes
+				  pass.entries=num_passes
+				    pass.confirmation=SecureRandom.hex(16)
 			      pass.save
 		      #end
+		  UserMailer.purchase_confirmation(@user,pass).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
@@ -44,9 +46,11 @@ class PurchasesController < ApplicationController
 			      pass.purchase_id = @purchase.id
 			      pass.pass_set_id = @pass_set.id
 			      pass.redeemed = false
-				    pass.entries=num_passes
+				  pass.entries=num_passes
+				  pass.confirmation=SecureRandom.hex(16)
 			      pass.save
 		      #end
+		UserMailer.purchase_confirmation(@user,pass).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'
@@ -63,8 +67,10 @@ class PurchasesController < ApplicationController
 			      pass.pass_set_id = @pass_set.id
 			      pass.redeemed = false
 				    pass.entries=num_passes
+					  pass.confirmation=SecureRandom.hex(16)
 			      pass.save
 		      #end
+		  UserMailer.purchase_confirmation(@user,pass).deliver
           redirect_to [@bar,@pass_set], notice: 'Purchase created'
 		  else
 		      redirect_to [@bar,@pass_set], notice: 'Purchase NOT Created'

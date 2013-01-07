@@ -8,10 +8,10 @@ class AdminController < ApplicationController
   end
 
   def customers
-   @customers = User.where("partner = 'f' AND admin='f'").order(:email)
+   @customers = User.where("partner = 'f' AND admin='f'").order(:email).paginate(:page => params[:page], :per_page => 10)
   end
 
   def partners
-  @partners = User.where("partner = 't'").order(:email)
+  @partners = User.where("partner = 't'").order(:email).paginate(:page => params[:page], :per_page => 10)
   end  
 end

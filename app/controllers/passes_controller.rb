@@ -7,6 +7,15 @@ class PassesController < ApplicationController
   	@passes = @user.passes.order('updated_at DESC')
   end
   
+  def show
+		@user=current_user
+		@pass = Pass.find(params[:id])
+		if(@user != @pass.purchase.user)
+		redirect_to:root
+		flash[:notice] = "Opps! You went somewhere you're not supposed to."
+		end
+  end
+  
   def toggleRedeem
    @pass = Pass.find(params[:id])
    if(@pass.redeemed?)

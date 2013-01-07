@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223134117) do
+ActiveRecord::Schema.define(:version => 20130105195743) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
-    t.integer  "phone_number"
+    t.integer  "phone_number",        :limit => 8
     t.string   "address"
     t.text     "intro_paragraph"
     t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "logo"
@@ -74,12 +74,14 @@ ActiveRecord::Schema.define(:version => 20121223134117) do
     t.integer  "purchase_id"
     t.string   "name"
     t.boolean  "redeemed"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "entries",     :default => 0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "entries",      :default => 0
     t.integer  "price"
+    t.string   "confirmation"
   end
 
+  add_index "passes", ["confirmation"], :name => "index_passes_on_confirmation"
   add_index "passes", ["pass_set_id"], :name => "index_passes_on_Pass_Set_id"
   add_index "passes", ["purchase_id"], :name => "index_passes_on_Purchase_id"
 

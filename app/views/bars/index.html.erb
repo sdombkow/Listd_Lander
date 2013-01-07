@@ -1,13 +1,22 @@
-<h1>Partner Homepage for <%=current_user.name %></h1>
+<h1>Partner Dashboard</h1>
+<h2><%=current_user.name %></h2>
 
-<h2>Your Bar Locations </h2>  	
+<h3>Bar Locations: </h3>  	
 
 <% if(@bars.empty?) %>
-<h5> There are no bar locations linked to this account </h5>
+	<h5> There are no bar locations linked to this account </h5>
 <% else %>
-<ul>
-<% @bars.each do |bar| %>
-	<li><%= link_to "View " + bar.name + "'s information", bar %> </li>
+	
+	<ul>
+	
+	<% @bars.each do |bar| %>
+		</br>
+		<h4> 
+			<%= bar.name %> 
+		</h4>
+		<p> 
+			<%= link_to "View " + bar.name + "'s information", bar %>
+		</p>
 	
 	
 	
@@ -29,11 +38,11 @@
 
 <% bar.pass_sets.each do |pass_set| %>
   <tr>
-    <td><%= pass_set.date %></td>
+    <td><%= pass_set.date.strftime("%m/%d/%Y") %></td>
     <td><%= pass_set.total_released_passes %></td>
     <td><%= pass_set.sold_passes %></td>
     <td><%= pass_set.unsold_passes %></td>
-    <td><%= pass_set.price %></td>
+    <td>$<%= pass_set.price %>0</td>
 	<td><%= link_to 'Show Purchased Tickets', [bar, pass_set] %></td>
   </tr>
 <% end %>

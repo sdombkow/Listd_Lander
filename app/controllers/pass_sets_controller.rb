@@ -1,6 +1,7 @@
 class PassSetsController < ApplicationController
   # GET /pass_sets
   # GET /pass_sets.json
+  before_filter :authenticate_user!
   def index
     @bar = Bar.find(params[:bar_id])
     @pass_sets = @bar.pass_sets
@@ -18,6 +19,10 @@ class PassSetsController < ApplicationController
     @pass_set = PassSet.find(params[:id])
 	  @passes = @pass_set.passes
     @purchase = Purchase.new
+    if current_user.stripe_customer_token != nil
+      @customer_card = Stripe::Customer.retrieve(current_user.stripe_customer_token)
+      @last_four = @customer_card.active_card.last4
+    end
     @full_bar_path = "http://#{request.host}" + (bar_path @pass_set.bar).to_s
     @open_graph = false
     if flash[:notice] == 'Purchase created'
@@ -58,8 +63,17 @@ class PassSetsController < ApplicationController
 	@pass_set.unsold_passes = @pass_set.total_released_passes
     @bar = Bar.find(params[:bar_id])
     @pass_set.bar = @bar
+	@existing_set = @bar.pass_sets.where("date = ?", @pass_set.date).first
     respond_to do |format|
-      if @pass_set.save
+		if @pass_set.date < Date.today
+		flash[:notice] = 'Error: You are trying to create a pass for a date that has already passed!'
+        format.html { render action: "new"  }
+        format.json { render json: @pass_set.errors, status: :unprocessable_entity }
+	elsif @existing_set
+				flash[:notice] = 'Error: Please use edit to change existing passes'
+				format.html { redirect_to edit_user_bar_pass_set_path(@bar.user, @bar, @existing_set) }
+				format.json { render json: @pass_set.errors, status: :unprocessable_entity }
+      elsif @pass_set.save
         format.html { redirect_to [@bar.user, @bar], notice: 'Pass set was successfully created.' }
         format.json { render json: @pass_set, status: :created, location: @pass_set }
       else
@@ -74,9 +88,18 @@ class PassSetsController < ApplicationController
   def update
     @bar = Bar.find(params[:bar_id])
     @pass_set = PassSet.find(params[:id])
-
+	@date = Date.new(params[:pass_set]["date(1i)"].to_i,params[:pass_set]["date(2i)"].to_i,params[:pass_set]["date(3i)"].to_i)
+	@existing_set = @bar.pass_sets.where("date = ?", @date).first
     respond_to do |format|
-      if @pass_set.update_attributes(params[:pass_set])
+	if @date < Date.today
+		flash[:notice] = 'Error: You are trying to edit a pass to a date that has already passed!'
+	    format.html { render action: "edit" }
+        format.json { render json: @pass_set.errors, status: :unprocessable_entity }
+	elsif @existing_set
+		flash[:notice] = 'Error: You are trying to edit a pass to a date that has already exists!'
+	    format.html { render action: "edit" }
+        format.json { render json: @pass_set.errors, status: :unprocessable_entity }
+	elsif @pass_set.update_attributes(params[:pass_set])
         format.html { redirect_to [@bar.user, @bar], notice: 'Pass set was successfully updated.' }
         format.json { head :no_content }
       else

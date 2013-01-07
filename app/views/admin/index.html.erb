@@ -1,17 +1,19 @@
-<h1>Admin Homepage</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Administration Dashboard</h1>
 </br>
 <p>Serving <%= @numOfCustomers %> Customers</p>
 <p>With <%= @numOfPartners %> Partners</p>
 <p>At X Locations</p>
 </br>
+
+	<h2>Registered Customers</h2>
 	<li>
-    <%= link_to 'Show Registered Customers', 'admin/customers' %>
+    	<%= link_to 'Show Registered Customers', 'admin/customers' %>
     </li>
 	</br>
 	
+	<h2>Registered Partners</h2>
 	<li>
-    <%= link_to 'Show Registered Partners', 'admin/partners' %>
+    	<%= link_to 'Show Registered Partners', 'admin/partners' %>
     </li>
 	</br>
 
