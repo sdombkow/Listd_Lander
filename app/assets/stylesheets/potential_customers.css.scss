@@ -1,0 +1,118 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html.home.index, body.home.index {
+  height: auto;
+  min-height: 100%;
+}
+
+body.home.index {
+background: #d0d0d0; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QwZDBkMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2U0ZTRlNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ3JSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ3JSIgc3RvcC1jb2xvcj0iI2U3ZTdlNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU3JSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU3JSIgc3RvcC1jb2xvcj0iIzE1MTUxNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  #d0d0d0 0%, #e4e4e4 20%, #dddddd 47%, #e7e7e7 47%, #dddddd 57%, #151515 57%, #000000 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0d0d0), color-stop(20%,#e4e4e4), color-stop(47%,#dddddd), color-stop(47%,#e7e7e7), color-stop(57%,#dddddd), color-stop(57%,#151515), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 20%,#dddddd 47%,#e7e7e7 47%,#dddddd 57%,#151515 57%,#000000 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 20%,#dddddd 47%,#e7e7e7 47%,#dddddd 57%,#151515 57%,#000000 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 20%,#dddddd 47%,#e7e7e7 47%,#dddddd 57%,#151515 57%,#000000 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #d0d0d0 0%,#e4e4e4 20%,#dddddd 47%,#e7e7e7 47%,#dddddd 57%,#151515 57%,#000000 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0d0d0', endColorstr='#000000',GradientType=0 ); /* IE6-8 */
+background-repeat: no-repeat;
+}
+
+#banner {
+  padding-top: 20px;
+}
+
+#banner-content {
+  padding-top: 40px;
+  padding-right: 10%;
+}
+
+#banner-content p {
+  margin: 25px 0 0 10%;
+  line-height: 18px;
+  color: #606060;
+  font-size: 18px;
+  font-style: italic;
+}
+
+#banner-content a {
+  margin: 25px 0 0 10%;
+}
+
+#steps {
+  padding: 3%;
+}
+
+#steps #one {
+  background: url('step_one.png') no-repeat;
+  padding: 10% 7% 10% 5%;
+}
+
+#steps #two {
+  background: url('step_two.png') no-repeat;
+  padding: 10% 7% 10% 5%;
+}
+
+#steps #three {
+  background: url('step_three.png') no-repeat;
+  padding: 10% 7% 10% 5%;
+}
+
+#steps p {
+  color: #fff;
+  font-size: 14px;
+}
+
+#stepstwo {
+  padding: 0%;
+}
+
+#stepstwo #one {
+  padding: 0% 7% 10% 0%;
+}
+
+#stepstwo #two {
+  padding: 0% 7% 10% 0%;
+}
+
+#stepstwo #three {
+  padding: 0% 7% 10% 0%;
+}
+
+#stepstwo p {
+  color: #111111;
+  font-size: 14px;
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  body.home.index {
+    background: #d0d0d0; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2QwZDBkMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEzJSIgc3RvcC1jb2xvcj0iI2U0ZTRlNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iI2U3ZTdlNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iI2RkZGRkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iIzE1MTUxNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #d0d0d0 0%, #e4e4e4 13%, #dddddd 30%, #e7e7e7 30%, #dddddd 56%, #151515 56%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d0d0d0), color-stop(13%,#e4e4e4), color-stop(30%,#dddddd), color-stop(30%,#e7e7e7), color-stop(56%,#dddddd), color-stop(56%,#151515), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 13%,#dddddd 30%,#e7e7e7 30%,#dddddd 56%,#151515 56%,#000000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 13%,#dddddd 30%,#e7e7e7 30%,#dddddd 56%,#151515 56%,#000000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #d0d0d0 0%,#e4e4e4 13%,#dddddd 30%,#e7e7e7 30%,#dddddd 56%,#151515 56%,#000000 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #d0d0d0 0%,#e4e4e4 13%,#dddddd 30%,#e7e7e7 30%,#dddddd 56%,#151515 56%,#000000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0d0d0', endColorstr='#000000',GradientType=0 ); /* IE6-8 */
+	}
+
+	#banner-content {
+	  padding-top: 0px;
+	}
+	
+	#steps {
+	  margin-top: 50px;
+	}
+	
+	#steps p {
+	  margin-top: 80px;
+	}
+}
+
+

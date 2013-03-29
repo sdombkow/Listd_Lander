@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105195743) do
+ActiveRecord::Schema.define(:version => 20130328191941) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(:version => 20130105195743) do
 
   add_index "bars", ["user_id"], :name => "index_bars_on_user_id"
 
+  create_table "lead_infos", :force => true do |t|
+    t.string   "email"
+    t.string   "city"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "leads", :force => true do |t|
+    t.string   "email_address"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "pass_sets", :force => true do |t|
     t.integer  "bar_id"
     t.date     "date"
@@ -84,6 +97,13 @@ ActiveRecord::Schema.define(:version => 20130105195743) do
   add_index "passes", ["confirmation"], :name => "index_passes_on_confirmation"
   add_index "passes", ["pass_set_id"], :name => "index_passes_on_Pass_Set_id"
   add_index "passes", ["purchase_id"], :name => "index_passes_on_Purchase_id"
+
+  create_table "potential_customers", :force => true do |t|
+    t.string   "email"
+    t.string   "city"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "purchases", :force => true do |t|
     t.date     "date"

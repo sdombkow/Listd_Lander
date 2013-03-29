@@ -1,5 +1,20 @@
 class HomeController < ApplicationController
   def index
+      @potential_customer = PotentialCustomer.new
+  end
+  
+  def lead_creation
+      @potential_customer = PotentialCustomer.new(params[:potential_customer])
+
+        respond_to do |format|
+          if @potential_customer.save
+            format.html { redirect_to @potential_customer, notice: 'Potential customer was successfully created.' }
+            format.json { render json: @potential_customer, status: :created, location: @potential_customer }
+          else
+            format.html { render action: "new" }
+            format.json { render json: @potential_customer.errors, status: :unprocessable_entity }
+          end
+        end
   end
 
   def welcome

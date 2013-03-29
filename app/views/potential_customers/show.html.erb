@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @potential_customer.email %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @potential_customer.city %>
+</p>
+
+
+<%= link_to 'Edit', edit_potential_customer_path(@potential_customer) %> |
+<%= link_to 'Back', potential_customers_path %>
