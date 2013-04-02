@@ -44247,3 +44247,67 @@ ActionController::RoutingError (No route matches [GET] "/potential_customers"):
 
 
   Rendered /Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-01 17:42:31 -0700
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (744.4ms)
+Completed 500 Internal Server Error in 843ms
+
+ActionView::Template::Error (undefined method `potential_customers_path' for #<#<Class:0x00000101141548>:0x00000101136828>):
+    6: 		<%= image_tag("get_listed_text.png", alt: "Get Listed") %>
+    7: 		<p>LISTD provides premium access to dining and entertainment locations.</br></br>Also available for your mobile phone and tablet.</br></br></p>
+    8: 		<div id="email-input">
+    9: 			<%= simple_form_for(@potential_customer) do |f| %>
+    10: 	  			<%= f.error_notification %>
+    11: 				<div class="input-append">	
+    12: 	    			<%= f.text_field :email, :placeholder => "Email" %>
+  app/views/home/index.html.erb:9:in `_app_views_home_index_html_erb__3155262429421588153_2156321740'
+
+
+  Rendered /Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (52.2ms)
+  Rendered /Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered /Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (59.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-01 17:43:53 -0700
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (98.0ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+  Rendered layouts/_messages.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 151ms (Views: 139.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/potential_customers" for 127.0.0.1 at 2013-04-01 17:43:58 -0700
+Processing by PotentialCustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBJi6dT8e/5/rM64RxgX26kqlj1lLb/L8jU1MqiLP/4=", "potential_customer"=>{"email"=>"sdombkow@andrew.cmu.edu"}, "commit"=>"Submit"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (112.4ms)[0m  INSERT INTO "potential_customers" ("city", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["city", nil], ["created_at", Tue, 02 Apr 2013 00:43:58 UTC +00:00], ["email", "sdombkow@andrew.cmu.edu"], ["updated_at", Tue, 02 Apr 2013 00:43:58 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 120ms (ActiveRecord: 114.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-04-01 17:43:58 -0700
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_navigation.html.erb (0.0ms)
+  Rendered layouts/_messages.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/potential_customers" for 127.0.0.1 at 2013-04-01 17:44:03 -0700
+Processing by PotentialCustomersController#index as HTML
+  [1m[35mPotentialCustomer Load (0.2ms)[0m  SELECT "potential_customers".* FROM "potential_customers" 
+Completed 500 Internal Server Error in 5ms
+
+ActionView::MissingTemplate (Missing template potential_customers/index, application/index with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :coffee]}. Searched in:
+  * "/Users/scottdombkowski/Desktop/Listd_Lander/app/views"
+  * "/Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/devise-2.1.2/app/views"
+):
+  app/controllers/potential_customers_controller.rb:7:in `index'
+
+
+  Rendered /Users/scottdombkowski/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.9ms)
